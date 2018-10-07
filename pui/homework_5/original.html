@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 <head>
+    <!-- https://stackoverflow.com/questions/17935819/why-is-this-html5-document-invalid -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bun Bun Bake Shop</title>
     <!-- styles -->
     <link rel="stylesheet" type="text/css" href="style.css">
-    <!-- fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 </head>
 
 <body>
     <div id="container">
         <section id="page_content">
-            <header id="header" role="banner">
+            <header id="header">
                 <img id="logo" src="img/logo.png" alt="company icon">
                 <div class="title">Bun Bun Bake Shop</div>
                 <nav>
@@ -22,35 +22,39 @@
                         <li><a href="#clients">LOCATIONS</a></li>
                     </ul>
                 </nav>
-                <div class="vLine"></div>
+                <div class="verticalline divider1"></div>
+                <div class="verticalline divider2"></div>
                 <img id="cart" src="img/cart.png" alt="cart icon">
+                <div class="signin">
+                    <a href="#home">Sign in</a>
+                </div>
             </header>
             <!-- line to devide two sections  -->
-            <div class="hLine"></div>
+            <div class="horizaontalline"></div>
 
             <div class="backButton">
-                <a href="browsing.html"><img src="img/back.png"></a>
+                <a href="browsing.html"><img src="img/back.png" alt="back arrow icon"></a>
                 <a href="browsing.html">Back</a>
             </div>
             <div class="detail">
                 <img class="mainImg" src="img/browsing1.jpg" alt="original rolls">
                 <div class="img_overlay">
                     <div class="leftArrow" id="detialLBox"></div>
-                    <img src="img/left.png" id="detialLArrow" alt="company icon">
+                    <img src="img/left.png" id="detialLArrow" alt="left arrow icon">
                     <div class="rightArrow" id="detialRBox"></div>
-                    <img src="img/right.png" id="detialRArrow" alt="company icon">
+                    <img src="img/right.png" id="detialRArrow" alt="right arrow icon">
                 </div>
                 <div class="otherImg">
-                    <img src="img/Original/detail0.jpg" alt="company icon">
-                    <img src="img/Original/detail1.jpg" alt="company icon">
-                    <img src="img/Original/detail2.jpg" alt="company icon">
-                    <img src="img/Original/detail3.jpg" alt="company icon">
+                    <img src="img/Original/detail0.jpg" alt="original cinnamon 1">
+                    <img src="img/Original/detail1.jpg" alt="original cinnamon 2">
+                    <img src="img/Original/detail2.jpg" alt="original cinnamon 3">
+                    <img src="img/Original/detail3.jpg" alt="original cinnamon 4">
                 </div>
 
                 <div class="textContent">
                     <h1>Original Cinnamon Roll</h1>
                     <h2>Our most famous signature cinnamon roll. <br> We are always committed to use fresh ingredients to make our rolls.</h2>
-                    <div class="hLine" id="sectionBreak1"></div>
+                    <div class="horizaontalline sectionBreak"></div>
                     <h3>Frosting choice</h3>
                     <div class="twoCol">
                         <a class="button selection" href=#browsing.html>None</a>
@@ -65,7 +69,7 @@
                         <a class="button selection" href=#browsing.html>3</a>
                         <a class="button selection" href=#browsing.html>4</a>
                     </div> <br>
-                    <div class="hLine" id="sectionBreak1"></div>
+                    <div class="horizaontalline sectionBreak"></div>
                     <h3>Method</h3>
                     <div class="twoCol">
                         <a class="button selection" href=#browsing.html>In-store Pickup</a>
@@ -90,7 +94,9 @@
             <div>Ingredients</div>
             <div>Contact</div>
         </div>
-        <a href="original.html"><img src="img/social.png" class="social"></a>
+        <a href="original.html">
+            <img src="img/social.png" class="social" alt="social media icons">
+        </a>
     </footer>
 </body>
 

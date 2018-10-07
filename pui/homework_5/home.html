@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 <head>
+    <!-- https://stackoverflow.com/questions/17935819/why-is-this-html5-document-invalid -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bun Bun Bake Shop</title>
     <!-- styles -->
     <link rel="stylesheet" type="text/css" href="style.css">
-    <!-- fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 </head>
 
 <body>
     <div id="container">
         <section id="page_content">
-            <header id="header" role="banner">
+            <header id="header">
                 <img id="logo" src="img/logo.png" alt="company icon">
-                <div class="title">Bun Bun Bake Shop</div>
+                <h2 class="title">Bun Bun Bake Shop</h2>
                 <nav>
                     <ul class="nav">
                         <li><a href="home.html">HOME</a></li>
@@ -22,11 +22,15 @@
                         <li><a href="#clients">LOCATIONS</a></li>
                     </ul>
                 </nav>
-                <div class="vLine"></div>
+                <div class="verticalline divider1"></div>
+                <div class="verticalline divider2"></div>
                 <img id="cart" src="img/cart.png" alt="cart icon">
+                <div class="signin">
+                    <a href="#home">Sign in</a>
+                </div>
             </header>
             <!-- line to devide two sections  -->
-            <div class="hLine"></div>
+            <div class="horizaontalline"></div>
 
             <div class="imgContent">
                 <img id="home_img" src="img/home_img.jpg" alt="fresh rolls">
@@ -53,7 +57,9 @@
             <div>Ingredients</div>
             <div>Contact</div>
         </div>
-        <a href="original.html"><img src="img/social.png" class="social"></a>
+        <a href="original.html">
+            <img src="img/social.png" class="social" alt="social media icons">
+        </a>
     </footer>
 </body>
 

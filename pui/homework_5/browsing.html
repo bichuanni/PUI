@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 <head>
+    <!-- https://stackoverflow.com/questions/17935819/why-is-this-html5-document-invalid -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bun Bun Bake Shop</title>
     <!-- styles -->
     <link rel="stylesheet" type="text/css" href="style.css">
-    <!-- fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet">
 </head>
 
 <body>
     <div id="container">
         <section id="page_content">
-            <header id="header" role="banner">
+            <header id="header">
                 <img id="logo" src="img/logo.png" alt="company icon">
                 <div class="title">Bun Bun Bake Shop</div>
                 <nav>
@@ -21,37 +22,66 @@
                         <li><a href="#clients">LOCATIONS</a></li>
                     </ul>
                 </nav>
-                <div class="vLine divider1"></div>
-                <div class="vLine divider2"></div>
+                <div class="verticalline divider1"></div>
+                <div class="verticalline divider2"></div>
                 <img id="cart" src="img/cart.png" alt="cart icon">
-                <div class="signIn"><a href="#HOME">Sign in</a></div>
+                <div class="signin">
+                    <a href="#home">Sign in</a>
+                </div>
             </header>
-            <!-- line to devide two sections  -->
-            <div class="hLine"></div>
+            <!-- line to devide two sections -->
+            <div class="horizaontalline"></div>
 
-            <div class="category">Signature Rolls/All Rolls</div>
+            <h2 class="category">Signature Rolls/All Rolls</h2>
             <!-- creat gird -->
             <div class="row">
                 <div class="column">
-                    <!-- make sure only the visible part is clicable -->
-                    <!-- https://stackoverflow.com/questions/21617152/why-is-the-margin-space-of-my-image-link-clickable -->
-                    <a href="original.html"><img src="img/browsing1.jpg"></a>
-                    <div class="rectangle"><a href="original.html">Original Cinnamon Roll</a></div>
-                    <a href="home.html"><img src="img/browsing4.jpg"></a>
-                    <div class="rectangle"><a href="home.html">Original Cinnamon Roll (Gluten Free)</a></div>
+                    <!--
+                        make sure only the visible part is clicable
+                        https://stackoverflow.com/questions/21617152/why-is-the-margin-space-of-my-image-link-clickable
+                    -->
+                    <a href="original.html">
+                        <img src="img/browsing1.jpg" alt="photo of original cinnamon roll">
+                    </a>
+                    <div class="rectangle">
+                        <a href="original.html">Original Cinnamon Roll</a>
+                    </div>
+                    <a href="home.html">
+                        <img src="img/browsing4.jpg" alt="photo of original cinnamon roll - gluten free">
+                    </a>
+                    <div class="rectangle">
+                        <a href="home.html">Original Cinnamon Roll (Gluten Free)</a>
+                    </div>
                 </div>
 
                 <div class="column">
-                    <a href="home.html"><img src="img/browsing2.jpeg"></a>
-                    <div class="rectangle"><a href="home.html">Chocolate Cinnamon Roll</a></div>
-                    <a href="home.html"><img src="img/browsing5.jpg"></a>
-                    <div class="rectangle"><a href="home.html">Apple Cinnamon Roll</a></div>
+                    <a href="home.html">
+                        <img src="img/browsing2.jpeg" alt="photo of chocolate cinnamon roll">
+                    </a>
+                    <div class="rectangle">
+                        <a href="home.html">Chocolate Cinnamon Roll</a>
+                    </div>
+                    <a href="home.html">
+                        <img src="img/browsing5.jpg" alt="photo of apple cinnamon roll">
+                    </a>
+                    <div class="rectangle">
+                        <a href="home.html">Apple Cinnamon Roll</a>
+                    </div>
                 </div>
+
                 <div class="column">
-                    <a href="home.html"><img src="img/browsing3.jpg"></a>
-                    <div class="rectangle"><a href="home.html">Blackberry Cinnamon Roll</a></div>
-                    <a  href="home.html"><img src="img/browsing6.jpg"></a>
-                    <div class="rectangle"><a href="home.html">Blueberry Cinnamon Roll</a></div>
+                    <a href="home.html">
+                        <img src="img/browsing3.jpg" alt="photo of blackberry cinnamon roll">
+                    </a>
+                    <div class="rectangle">
+                        <a href="home.html">Blackberry Cinnamon Roll</a>
+                    </div>
+                    <a href="home.html">
+                        <img src="img/browsing6.jpg" alt="photo of blurberry cinnamon roll">
+                    </a>
+                    <div class="rectangle">
+                        <a href="home.html">Blueberry Cinnamon Roll</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -66,7 +96,9 @@
             <div>Ingredients</div>
             <div>Contact</div>
         </div>
-        <a href="original.html"><img src="img/social.png" class="social"></a>
+        <a href="original.html">
+            <img src="img/social.png" class="social" alt="social media icons">
+        </a>
     </footer>
 </body>
 

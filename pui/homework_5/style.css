@@ -29,7 +29,7 @@
 .button {
     position: absolute;
     top: 53%;
-    left: 42%;
+    left: 43%;
     box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1);
     text-decoration: none;
     font-weight: 400;
@@ -88,7 +88,6 @@
 }
 
 .backButton a {
-    /*font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;*/
     font-size: 15px;
     font-weight: 300;
     text-decoration: none;
@@ -105,8 +104,6 @@
     display: grid;
     grid-template-columns: 287px;
     grid-gap: 10px 30px;
-
-    /*padding: 0px 5%;*/
 }
 
 .oneCol .selection{
@@ -162,7 +159,7 @@ header a {
 
 header nav {
     /*float: right;*/
-    padding-left: 50%;
+    right: 15%;
     position: absolute;
     top: 5px;
 }
@@ -196,7 +193,7 @@ h3 {
     margin-left: 1%;
     font-size: 22px;
     font-weight: 300;
-    color: rgb(78, 63, 144)；
+    color: rgb(78, 63, 144);
 }
 
 .title {
@@ -219,7 +216,7 @@ body {
     font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
 }
 
-.signIn {
+.signin {
     position: absolute;
     top: 20px;
     left: 94%;
@@ -297,7 +294,7 @@ footer {
 
 
 /*shapes*/
-.hLine {
+.horizaontalline {
     position: absolute;
     width: 100%;
     height: 10px;
@@ -306,7 +303,7 @@ footer {
     /*z-index: -1;*/
 }
 
-.vLine {
+.verticalline {
     position: absolute;
     width: 1px;
     height: 59px;
@@ -320,7 +317,7 @@ footer {
 }
 
 
-#sectionBreak1 {
+.sectionBreak {
     position: relative;
     top: 110%;
     margin-top: 5px;
