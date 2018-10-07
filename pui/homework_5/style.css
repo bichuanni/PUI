@@ -60,6 +60,36 @@
     border-radius: 5px 5px 0px 0px;
 }
 
+.otherImg img{
+    width: 14%;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 5px;
+    filter: brightness(0.7);
+}
+
+.backButton {
+    position: absolute;
+    margin-top: 3%;
+    margin-left: 10%;
+}
+
+.backButton img {
+    width: 20px;
+}
+
+.backButton a {
+    /*font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;*/
+    font-size: 15px;
+    font-weight: 300;
+    text-decoration: none;
+}
+
+.textContent {
+    position: absolute;
+    top: 0px;
+    left: 65%;
+}
 
 /*********** HEADER ************/
 header {
@@ -67,7 +97,7 @@ header {
     padding: 20px;
     background-color: white;
     color: rgb(78, 63, 144);
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    /*font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;*/
 }
 
 header a {
@@ -92,10 +122,32 @@ header nav ul li {
 }
 
 h1 {
-    margin-bottom: 3rem !important;
+    font-size: 30px;
+    font-weight: 400;
+    padding: 0px 0px 10px 0px;
+    margin: 0px;
+    color: rgb(78, 63, 144);
 }
 
 h2 {
+    margin: 0px;
+    padding: 0px;
+    margin-left: 1%;
+    font-size: 17px;
+    font-weight: 300;
+    color: gray;
+}
+
+h3 {
+    margin: 0px;
+    padding: 0px;
+    margin-left: 1%;
+    font-size: 22px;
+    font-weight: 300;
+    color: gray;
+}
+
+.title {
     margin: 0;
     margin-left: 5%;
     font-size: 17px;
@@ -103,10 +155,8 @@ h2 {
 }
 
 body {
-    margin: 0;
-    color: teal;
-    position: relative;
-    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
 }
 
 
@@ -133,7 +183,7 @@ footer {
     /*https://www.youtube.com/watch?v=HgwCeNVPlo0*/
     font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
     font-weight: 200;
-    font-size: 15px;
+    font-size: 13px;
     line-height: 150%;
     /*position: absolute;*/
     display: grid;
@@ -207,7 +257,7 @@ footer {
 }
 
 .rectangle a {
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    /*font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;*/
     color: rgb(78, 63, 144);
     font-weight: 300;
     font-size: 15px;
@@ -238,7 +288,27 @@ footer {
     opacity: 0.5;
 }
 
+.img_overlay img {
+    position: absolute;
+    top: 38.5%;
+    width: 55px;
+    height: 55px;
+    z-index: 2;
+}
 
 #detialRArrow {
+    right: 42%;
+}
+
+#detialLArrow {
+    left: 2%;
+}
+
+#detialLBox {
+    top: 37%;
+}
+
+#detialRBox {
+    top: 37%;
     right: 40%;
 }
