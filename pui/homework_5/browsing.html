@@ -10,30 +10,59 @@
 
 <body>
     <div id="container">
-        <header>
-            <h1>Bun Bun Bake Shop</h1>
-            <nav>
-                <a href="index.html">HOME</a> -
-                <a href="browsing.html">SIGNATURE ROLLS</a>
-                <a href="index.html">LOCATION</a>
-            </nav>
-        </header>
+        <section id="page_content">
+            <header id="header" role="banner">
+                <img id="logo" src="img/logo.png" alt="company icon">
+                <h2>Bun Bun Bake Shop</h2>
+                <nav>
+                    <ul class="nav">
+                        <li><a href="home.html">HOME</a></li>
+                        <li><a href="browsing.html">SIGNATURE ROLLS</a></li>
+                        <li><a href="#clients">LOCATIONS</a></li>
+                    </ul>
+                </nav>
+                <div class="vLine"></div>
+                <img id="cart" src="img/cart.png" alt="cart icon">
+            </header>
+            <!-- line to devide two sections  -->
+            <div class="hLine"></div>
+            <!-- creat gird -->
+            <div class="row">
+                <div class="column">
+                    <a  href="home.html">
+                        <img src="img/browsing1.jpg">
+                        <div class="rectangle"><a href="home.html">Original Cinnamon Roll</a></div>
+                    </a>
 
-        <div id="todo-lists">
-            <div class="list">
-                <a href="list.html">Groceries</a>
+                    <img src="img/browsing4.jpg">
+                    <div class="rectangle"><a href="home.html">Original Cinnamon Roll (Gluten Free)</a></div>
+                </div>
+                <div class="column">
+                    <img src="img/browsing2.jpeg">
+                    <div class="rectangle"><a href="home.html">Chocolate Cinnamon Roll</a></div>
+                    <img src="img/browsing5.jpg">
+                    <div class="rectangle"><a href="home.html">Apple Cinnamon Roll</a></div>
+                </div>
+                <div class="column">
+                    <img src="img/browsing3.jpg">
+                    <div class="rectangle"><a href="home.html">Blackberry Cinnamon Roll</a></div>
+                    <img src="img/browsing6.jpg">
+                    <div class="rectangle"><a href="home.html">Blueberry Cinnamon Roll</a></div>
+                </div>
             </div>
+        </section>
+    </div>
 
-            <div class="list">
-                <a href="list.html">Homework</a>
-            </div>
-
-            <div class="list">
-                <a href="list.html">Random Errands</a>
-            </div>
+    <footer>
+        <div class="footerLinks">
+            <div>Team</div>
+            <div>FAQ</div>
+            <div>About Us</div>
+            <div>News</div>
+            <div>Ingredients</div>
+            <div>Contact</div>
         </div>
-
-        </div>
+    </footer>
 </body>
 
 </html>

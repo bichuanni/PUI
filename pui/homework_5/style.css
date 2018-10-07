@@ -2,16 +2,33 @@
 
 }*/
 
-#home_img {
+.container {
     position: relative;
+}
+
+#logo {
+    position: absolute;
+    width: 5%;
+    top: 10px;
+    left: 15px;
+}
+
+#cart {
+    position: absolute;
+    width: 2.5%;
+    top: 15px;
+    left: 88%;
+}
+
+#home_img {
     width: 100%;
     height:auto;
-    filter: brightness(0.85);
+    filter: brightness(0.9);
 }
 
 .button {
     position: absolute;
-    top: 70%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
     -webkit-box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.1);
@@ -22,26 +39,43 @@
 
 #call_out {
     position: absolute;
-    transform: translate(40%, -300%);
+    top: 30%;
+    left: 15%;
     text-align: center;
-    font-size: 60px;
-    color:black;
-    width:800px;
+    font-size: 75px;
+    color:white;
+    width:1000px;
 }
 
 
 /*********** HEADER ************/
 header {
-    text-align: center;
-    padding: 10px;
-    background-color: teal;
-    color: white;
-    font-family: 'Roboto Slab', serif;
+    /*text-align: center;*/
+    padding: 20px;
+    background-color: white;
+    color: rgb(78, 63, 144);
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
 }
 
 header a {
-    color: gold;
+    color: gray;
+    font-weight: 100;
     text-decoration: none;
+    /*text-align: right;*/
+    font-size: 15px;
+}
+
+header nav {
+    /*float: right;*/
+    padding-left: 50%;
+    position: absolute;
+    top: 5px;
+}
+
+header nav ul li {
+    width: 150px;
+    text-align: center;
+    display: inline-block;
 }
 
 h1 {
@@ -50,15 +84,144 @@ h1 {
 
 h2 {
     margin: 0;
+    margin-left: 5%;
+    font-size: 17px;
+    font-weight: 300;
 }
 
 body {
     margin: 0;
     color: teal;
+    position: relative;
     font-family: 'Roboto', sans-serif;
 }
 
-/*********** HEADER ************/
 
 
+/*********** FOTTER ************/
+/*https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b*/
+body::after {
+    content: '';
+    display: block;
+    height: 115px; /* Set same as footer's height */
+}
 
+
+footer {
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    padding: 40px 0px;
+    background-color: rgb(213, 213, 227);
+    color: rgb(78, 63, 144);
+}
+
+.footerLinks {
+    /*https://www.youtube.com/watch?v=HgwCeNVPlo0*/
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    font-weight: 200;
+    font-size: 15px;
+    line-height: 150%;
+    /*position: absolute;*/
+    display: grid;
+    grid-template-columns: 200px 200px;
+    padding: 0px 18%;
+}
+
+
+/*********** IMG GRID ************/
+/*https://www.w3schools.com/howto/howto_js_image_grid.asp*/
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 3% 15%;
+}
+
+/* Create three equal columns that sits next to each other */
+.column {
+    flex: 30%;
+    /*padding: 15px;*/
+}
+
+.column a {
+    display: block;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+
+.column img {
+    border-radius: 5px 5px 0px 0px;
+    /*margin-top: 100px;*/
+    /*margin-bottom: 50px;*/
+
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+
+    filter: drop-shadow(-5px 7px 8px rgba(150,150,150,.5));
+}
+
+
+/*shapes*/
+.hLine {
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    top: 48px;
+    border-bottom: 1px solid lightgray;
+}
+
+.vLine {
+    position: absolute;
+    width: 84.5%;
+    height: 59px;
+    top: 0px;
+    border-right: 1px solid lightgray;
+}
+
+.rectangle {
+    /*https://css-tricks.com/breaking-css-box-shadow-vs-drop-shadow/*/
+    border-radius: 0px 0px 5px 5px;
+    filter: drop-shadow(-5px 7px 15px rgba(200,200,200,.5));
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+    width: 82%;
+    background-color: white;
+    margin-bottom: 40px;
+}
+
+.rectangle a {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    color: rgb(78, 63, 144);
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 230%;
+    margin-left: 10px;
+    /*margin-top: 140px;*/
+    text-decoration: none;
+}
+
+.leftArrow {
+    position: absolute;
+    top: 45%;
+    width: 70px;
+    height: 70px;
+    background-color: white;
+    z-index: 1;
+    opacity: 0.5;
+}
+
+.rightArrow {
+    position: absolute;
+    top: 45%;
+    right: 0px;
+    width: 70px;
+    height: 70px;
+    background-color: white;
+    z-index: 1;
+    opacity: 0.5;
+}
