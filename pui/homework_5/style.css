@@ -17,7 +17,7 @@
     position: absolute;
     width: 2.5%;
     top: 15px;
-    left: 88%;
+    left: 87.5%;
 }
 
 #home_img {
@@ -28,23 +28,32 @@
 
 .button {
     position: absolute;
-    top: 65%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -webkit-box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.1);
-    font-weight: 700;
-    padding: 1.25rem 2.5rem;
+    top: 53%;
+    left: 42%;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    font-weight: 400;
+    padding: 10px;
+}
+
+.explore {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    padding: 13px 30px;
+    background-color: rgba(250, 240, 250, 0.9);
+    color: rgb(78, 63, 144);
+    border: 1px solid rgb(78, 63, 144);
 }
 
 #call_out {
     position: absolute;
     top: 30%;
-    left: 15%;
+    left: 11%;
     text-align: center;
     font-size: 75px;
     color:white;
-    width:1000px;
+    width:1100px;
 }
 
 /*********** Detail Page ************/
@@ -90,6 +99,49 @@
     top: 0px;
     left: 65%;
 }
+
+.oneCol {
+    /*https://www.youtube.com/watch?v=HgwCeNVPlo0*/
+    display: grid;
+    grid-template-columns: 287px;
+    grid-gap: 10px 30px;
+
+    /*padding: 0px 5%;*/
+}
+
+.oneCol .selection{
+    background-color: rgb(78, 63, 144);
+    color: white;
+}
+
+.twoCol {
+    /*https://www.youtube.com/watch?v=HgwCeNVPlo0*/
+    display: grid;
+    grid-template-columns: 120px 120px;
+    grid-gap: 10px 30px;
+    /*padding: 0px 5%;*/
+}
+
+.fourCol {
+    /*https://www.youtube.com/watch?v=HgwCeNVPlo0*/
+    display: grid;
+    grid-template-columns: 40px 40px 40px 40px;
+    grid-gap: 10px 34px;
+}
+
+.selection {
+    position: relative;
+    border-radius: 3px;
+    left: 3px;
+    top: 7px;
+    width: 90%;
+    border: 1px solid lightgray;
+    text-align: center;
+    color:gray;
+    font-size: 15px;
+    font-weight: 300;
+}
+
 
 /*********** HEADER ************/
 header {
@@ -144,7 +196,7 @@ h3 {
     margin-left: 1%;
     font-size: 22px;
     font-weight: 300;
-    color: gray;
+    color: rgb(78, 63, 144)；
 }
 
 .title {
@@ -154,12 +206,26 @@ h3 {
     font-weight: 300;
 }
 
+.category {
+    font-size: 20px;
+    font-weight: 400;
+    color: gray;
+    margin-top: 2%;
+    margin-left: 17%;
+}
+
 body {
     margin: 0px;
     font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
 }
 
-
+.signIn {
+    position: absolute;
+    top: 20px;
+    left: 94%;
+    font-size: 14px;
+    text-decoration: underline rgb(78, 63, 144);
+}
 
 /*********** FOTTER ************/
 /*https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b*/
@@ -174,15 +240,15 @@ footer {
     position: absolute;
     width: 100%;
     height: 80px;
-    padding: 40px 0px;
+    margin-top: -5px;
+    padding: 35px 0px;
     background-color: rgb(213, 213, 227);
     color: rgb(78, 63, 144);
 }
 
 .footerLinks {
     /*https://www.youtube.com/watch?v=HgwCeNVPlo0*/
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-    font-weight: 200;
+    font-weight: 300;
     font-size: 13px;
     line-height: 150%;
     /*position: absolute;*/
@@ -191,13 +257,19 @@ footer {
     padding: 0px 18%;
 }
 
+.social {
+    position: absolute;
+    width: 100px;
+    top: 40%;
+    left: 85%;
+}
 
 /*********** IMG GRID ************/
 /*https://www.w3schools.com/howto/howto_js_image_grid.asp*/
 .row {
     display: flex;
     flex-wrap: wrap;
-    padding: 3% 15%;
+    padding: 2% 15% 5% 15%;
 }
 
 /* Create three equal columns that sits next to each other */
@@ -241,6 +313,18 @@ footer {
     left: 86%;
     top: 0px;
     border-right: 1px solid lightgray;
+}
+
+.divider2 {
+    left: 91.5%;
+}
+
+
+#sectionBreak1 {
+    position: relative;
+    top: 110%;
+    margin-top: 5px;
+    margin-bottom: 15px;
 }
 
 .rectangle {
@@ -302,6 +386,16 @@ footer {
 
 #detialLArrow {
     left: 2%;
+}
+
+#homeRArrow {
+    top: 46%;
+    right: 1%;
+}
+
+#homeLArrow {
+    top: 46%;
+    left: 1%;
 }
 
 #detialLBox {
