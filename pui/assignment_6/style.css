@@ -1,0 +1,434 @@
+/*--------------------------------------------------------------*/
+/************************shared components***********************/
+/*--------------------------------------------------------------*/
+header {
+    color: rgb(78, 63, 144);
+    background-color: white;
+    padding: 20px;
+}
+
+header a {
+    color: gray;
+    font-size: 15px;
+    font-weight: 100;
+    text-decoration: none;
+}
+
+header nav {
+    position: absolute;
+    right: 15%;
+    top: 5px;
+}
+
+header nav ul li {
+    display: inline-block;
+    text-align: center;
+    width: 150px;
+}
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+    margin: 0;
+}
+
+.container {
+    position: relative;
+}
+
+h1 {
+    color: rgb(78, 63, 144);
+    font-size: 30px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0px 0px 10px 0px;
+}
+
+h2 {
+    color: gray;
+    font-size: 17px;
+    font-weight: 300;
+    margin: 0;
+    margin-left: 1%;
+    padding: 0;
+}
+
+h3 {
+    color: rgb(78, 63, 144);
+    font-size: 22px;
+    font-weight: 300;
+    margin: 0;
+    margin-left: 1%;
+    padding: 0;
+}
+
+.site-name {
+    color: rgb(78, 63, 144);
+    font-size: 17px;
+    font-weight: 300;
+    margin: 0;
+    margin-left: 5%;
+}
+
+#logo {
+    left: 15px;
+    position: absolute;
+    top: 10px;
+    width: 5%;
+}
+
+#cart {
+    left: 87.5%;
+    position: absolute;
+    top: 15px;
+    width: 2.5%;
+}
+
+.button {
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1);
+    font-weight: 400;
+    padding: 10px;
+    position: absolute;
+    text-decoration: none;
+}
+
+.signin {
+    font-size: 14px;
+    left: 94%;
+    position: absolute;
+    text-decoration: underline rgb(78, 63, 144);
+    top: 20px;
+}
+
+/*decorational lines*/
+.horizaontal-line {
+    border-bottom: 1px solid lightgray;
+    height: 10px;
+    position: absolute;
+    top: 48px;
+    width: 100%;
+}
+
+.vertical-line {
+    border-right: 1px solid lightgray;
+    height: 59px;
+    left: 86%;
+    position: absolute;
+    top: 0px;
+    width: 1px;
+}
+
+.divider2 {
+    left: 91.5%;
+}
+
+/*---------------------------------------------------------------*/
+/************************home page specific***********************/
+/*---------------------------------------------------------------*/
+.explore-button {
+    background-color: rgba(250, 240, 250, 0.9);
+    border: 1px solid rgb(78, 63, 144);
+    color: rgb(78, 63, 144);
+    font-size: 14px;
+    font-weight: 300;
+    left: 43%;
+    letter-spacing: 1px;
+    top: 54%;
+    padding: 13px 30px;
+}
+
+#call-out {
+    color:white;
+    font-size: 75px;
+    left: 1%;
+    position: absolute;
+    text-align: center;
+    top: 30%;
+    width: 100%;
+}
+
+#home-img {
+    height:auto;
+    filter: brightness(0.9);
+    width: 100%;
+}
+/*---------------------------------------------------------------*/
+/*********************** Detail Page specific*********************/
+/*---------------------------------------------------------------*/
+/*apply to all main content on detail page*/
+.detail {
+    margin: 3% 17%;
+    position: relative;
+}
+
+/*text content specific*/
+.detial-content {
+    left: 65%;
+    position: absolute;
+    top: 0;
+}
+
+/*enlarged img*/
+.main-img {
+    border-radius: 5px 5px 0px 0px;
+    height: 450px;
+    width: 60%;
+    object-fit: cover;
+}
+
+/*small thumbnail imgs*/
+.other-img img{
+    border-radius: 5px;
+    filter: brightness(0.7);
+    height: 75px;
+    object-fit: cover;
+    width: 14%;
+}
+
+.back-button {
+    margin-left: 10%;
+    margin-top: 3%;
+    position: absolute;
+}
+
+.back-button img {
+    width: 20px;
+}
+
+.back-button a {
+    font-size: 15px;
+    font-weight: 300;
+    text-decoration: none;
+}
+
+/*stylize all selection buttons*/
+.selection {
+    color:gray;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    font-size: 15px;
+    font-weight: 300;
+    left: 3px;
+    position: relative;
+    text-align: center;
+    top: 7px;
+    width: 90%;
+}
+
+/*decorational line*/
+.section-break {
+    margin-bottom: 15px;
+    margin-top: 5px;
+    position: relative;
+    top: 110%;
+}
+
+/*define grid system for slection buttons by specifing colum width*/
+/*https://www.youtube.com/watch?v=HgwCeNVPlo0*/
+.one-col {
+    display: grid;
+    grid-template-columns: 287px;
+    grid-gap: 10px 30px;
+}
+
+.one-col .selection{
+    background-color: rgb(78, 63, 144);
+    color: white;
+}
+
+.two-col {
+    display: grid;
+    grid-template-columns: 120px 120px;
+    grid-gap: 10px 30px;
+}
+
+.four-col {
+    display: grid;
+    grid-template-columns: 40px 40px 40px 40px;
+    grid-gap: 10px 34px;
+}
+
+/*---------------------------------------------------------------*/
+/********************** Browsing Page specific********************/
+/*---------------------------------------------------------------*/
+.category-text {
+    color: gray;
+    font-size: 20px;
+    font-weight: 400;
+    margin-left: 17%;
+    margin-top: 2%;
+}
+
+/*image grid*/
+/*https://www.w3schools.com/howto/howto_js_image_grid.asp*/
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2% 15% 5% 15%;
+}
+
+/*Create three equal columns that sits next to each other*/
+.column {
+    flex: 30%;
+}
+
+/*make sure only the visible part is clickable
+https://stackoverflow.com/questions/21617152/why-is-the-margin-space-of-my-image-link-clickable*/
+.column a {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+    width: 82%;
+}
+
+.column img {
+    border-radius: 5px 5px 0px 0px;
+    filter: drop-shadow(-5px 7px 8px rgba(150,150,150,.5));
+    height: 270px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.rectangle {
+    /*https://css-tricks.com/breaking-css-box-shadow-vs-drop-shadow/*/
+    background-color: white;
+    border-radius: 0px 0px 5px 5px;
+    filter: drop-shadow(-5px 7px 15px rgba(200,200,200,.5));
+    height: 50px;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -5px;
+    width: 82%;
+}
+
+.rectangle a {
+    color: rgb(78, 63, 144);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 230%;
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+/*where the arrows are places*/
+.left-arrow {
+    background-color: white;
+    height: 70px;
+    opacity: 0.5;
+    position: absolute;
+    top: 45%;
+    width: 70px;
+    z-index: 1;
+}
+
+.right-arrow {
+    background-color: white;
+    height: 70px;
+    opacity: 0.5;
+    position: absolute;
+    right: 0;
+    top: 45%;
+    width: 70px;
+    z-index: 1;
+}
+
+/*img of the arrow*/
+.img-overlay img {
+    height: 55px;
+    position: absolute;
+    top: 38.5%;
+    width: 55px;
+    z-index: 2;
+}
+
+/*make adjustment for dfferent pages*/
+#detial-r-arrow {
+    right: 42%;
+}
+
+#detial-l-arrow {
+    left: 2%;
+}
+
+#home-r-arrow {
+    right: 1%;
+    top: 46%;
+}
+
+#home-l-arrow {
+    left: 1%;
+    top: 46%;
+}
+
+#detial-l-box {
+    top: 37%;
+}
+
+#detial-r-box {
+    right: 40%;
+    top: 37%;
+}
+
+/*---------------------------------------------------------------*/
+/********************** Browsing Page specific********************/
+/*---------------------------------------------------------------*/
+h2 ol li {
+    list-style: none;
+    line-height: 130%;
+}
+
+.map-img {
+    padding-bottom: 100px;
+}
+
+.locator-img {
+    left: 30%;
+    position: absolute;
+    top: 40%;
+    width: 25px;
+}
+
+/*---------------------------------------------------------------*/
+/********************** shopping cart specific********************/
+/*---------------------------------------------------------------*/
+.shoppingcartcontent {
+    padding: 3% 10% 20% 10%;
+}
+
+/*---------------------------------------------------------------*/
+/****************************Shared Footer************************/
+/*---------------------------------------------------------------*/
+/*https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b*/
+body::after {
+    content: '';
+    display: block;
+    height: 115px;
+}
+
+footer {
+    color: rgb(78, 63, 144);
+    background-color: rgb(213, 213, 227);
+    height: 80px;
+    margin-top: -5px;
+    padding: 35px 0px;
+    position: absolute;
+    width: 100%;
+}
+
+.footer-links {
+    /*https://www.youtube.com/watch?v=HgwCeNVPlo0*/
+    display: grid;
+    font-weight: 300;
+    font-size: 13px;
+    grid-template-columns: 200px 200px;
+    line-height: 150%;
+    padding: 0px 18%;
+}
+
+.social {
+    left: 85%;
+    position: absolute;
+    top: 40%;
+    width: 100px;
+}
