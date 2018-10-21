@@ -44,7 +44,7 @@
             <!-- main content -->
             <div class="detail">
                 <!-- left side of the screen -->
-                <img class="main-img" src="img/browsing1.jpg" alt="original rolls">
+                <img class="main-img" id="cur-main" src="img/browsing1.jpg" alt="original rolls">
                 <div class="img-overlay">
                     <div class="left-arrow" id="detial-l-box"></div>
                     <img src="img/left.png" id="detial-l-arrow" alt="left arrow icon">
@@ -84,10 +84,11 @@
                         <a class="button selection" onclick="methodChoice(this)">Delivery</a>
                     </div> <br>
                     <div class="one-col">
-                        <a class="button selection" href=#browsing.html>Add to Cart</a>
+                        <a class="button selection" onclick="toChart(this)">Add to Cart</a>
                     </div> <br>
                 </div>
             </div>
+<!--             <div class="popup"><img class="popup" src="img/browsing1.jpg" alt="original rolls">Item Added to Cart</div> -->
         </section>
     </div>
 
