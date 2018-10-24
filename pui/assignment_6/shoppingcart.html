@@ -7,9 +7,13 @@
     <title>Bun Bun Bake Shop</title>
     <!-- styles -->
     <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- javascript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="main.js" type="text/javascript"></script>
 </head>
 
-<body>
+<!-- https://www.w3schools.com/jsref/event_onload.asp -->
+<body onload="getList()">
     <div id="container">
         <section id="page_content">
             <!-- stationary header/navgation section -->
@@ -39,8 +43,12 @@
                 <h1>Shopping Cart</h1>
                 <h2>Item &emsp;&emsp;&emsp;&emsp;&emsp; Method</h2>
                 <div class="horizaontal-line section-break"></div>
-                <div class="cart-item"></div>
+                <div id="item-list">
+                    <div id="empty"><br><br><br>Your shopping cart is currently empty<br><br><br><br></div>
+                </div>
                 <div class="horizaontal-line section-break"></div>
+                <a href="browsing.html" class="button selection">continue shopping</a>
+                <a href="#home" class="button selection checkout">check out</a>
             </div>
         </section>
     </div>
