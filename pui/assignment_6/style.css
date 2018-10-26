@@ -247,6 +247,15 @@ h3 {
     grid-gap: 10px 34px;
 }
 
+#price {
+    color: gray;
+    font-size: 17px;
+    font-weight: 300;
+    margin-right: 10%;
+    text-align: right;
+    padding: 8px;
+}
+
 .popup {
     animation-duration: 5s;
     animation-name: slidein;
@@ -426,6 +435,17 @@ h2 ol li {
     padding: 2% 17% 20% 17%;
 }
 
+.shoppingcartcontent h2 {
+    text-align: right;
+}
+
+.shoppingcartcontent h2 li {
+    display: inline;
+    list-style: none;
+    margin-right: 1%;
+    margin-left: 12%;
+}
+
 .checkout {
     background-color: rgb(78, 63, 144);
     border-color: white;
@@ -460,6 +480,34 @@ h2 ol li {
     top: 21%;
 }
 
+#method {
+    left: 53%;
+    position: absolute;
+    text-align: center;
+    top: 21%;
+    width: 10%;
+}
+
+#quantity {
+    left: 72%;
+    position: absolute;
+    text-align: center;
+    top: 21%;
+    width: 10%;
+}
+
+#cart-price {
+    left: 88%;
+    position: absolute;
+    text-align: right;
+    top: 21%;
+    width: 10%;
+}
+
+.total-price {
+    font-size: 25px;
+    font-style: italic;
+}
 /*---------------------------------------------------------------*/
 /****************************Shared Footer************************/
 /*---------------------------------------------------------------*/

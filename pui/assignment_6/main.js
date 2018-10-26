@@ -9,6 +9,8 @@ var preMethodChoice;
 var frostingChosen = false;
 var quantityChosen = false;
 var methodChosen = false;
+var newPrice;
+var totalPrice = 0;
 
 function frostingChoice(item) {
     frostingChosen = true;
@@ -18,6 +20,8 @@ function frostingChoice(item) {
 
     item.style.backgroundColor = "lightgray";
     preFrostingChoice = item;
+
+    checkPrice();
 }
 
 function quantityChoice(item) {
@@ -28,6 +32,8 @@ function quantityChoice(item) {
 
     item.style.backgroundColor = "lightgray";
     preQuantityChoice = item;
+
+    checkPrice();
 }
 
 function methodChoice(item) {
@@ -38,6 +44,17 @@ function methodChoice(item) {
 
     item.style.backgroundColor = "lightgray";
     preMethodChoice = item;
+
+    checkPrice();
+}
+
+function checkPrice(){
+    //update the new price based on users' current option choices
+    if (frostingChosen === true && quantityChosen === true && methodChosen === true) {
+        newPrice = preQuantityChoice.innerHTML * 3.33;
+        var prePrice = document.getElementById("price");
+        prePrice.innerHTML = ("Price: $ " + newPrice);
+    }
 }
 
 function toChart(item) {
@@ -52,7 +69,7 @@ function toChart(item) {
         var rollType = document.getElementsByTagName("h1")[0].innerHTML;
         var imgSrc = document.getElementById("cur-main").getAttribute("src");
         var imgAlt = document.getElementById("cur-main").getAttribute("alt");
-        var newItem = {type: rollType, frosting: preFrostingChoice.innerHTML, quantity: preQuantityChoice.innerHTML, method: preMethodChoice.innerHTML, src: imgSrc, alt: imgAlt};
+        var newItem = {type: rollType, frosting: preFrostingChoice.innerHTML, quantity: preQuantityChoice.innerHTML, method: preMethodChoice.innerHTML, src: imgSrc, alt: imgAlt, price: newPrice};
         storedList.push(newItem);
         localStorage.setItem("myCart", JSON.stringify(storedList));
         console.log(localStorage.getItem("myCart"));
@@ -94,6 +111,7 @@ function getList() {
             var targetLocation = document.getElementById("item-list");
             var cartItem = document.createElement("div");
             cartItem.className = "cart-content";
+            cartItem.id = i;
 
             var cartItemImg = document.createElement("img");
             cartItemImg.className = "cart-content";
@@ -106,13 +124,57 @@ function getList() {
             var cartItemFrosting = document.createElement("h2");
             cartItemFrosting.innerHTML = ("w/ " + storedList[i].frosting + " frosting");
 
+            var cartItemMethod = document.createElement("h2");
+            cartItemMethod.id = "method";
+            cartItemMethod.innerHTML = storedList[i].method;
+
+            var cartItemQuantity = document.createElement("h2");
+            cartItemQuantity.id = "quantity";
+            cartItemQuantity.innerHTML = storedList[i].quantity;
+
+            var cartItemPrice = document.createElement("h2");
+            cartItemPrice.id = "cart-price";
+            cartItemPrice.innerHTML = storedList[i].price;
+
+            //add delete button
+            // https://stackoverflow.com/questions/7066191/javascript-onclick-onsubmit-for-dynamically-created-button
+            var deleteButton = document.createElement("button");
+            deleteButton.className = "delete-item";
+            deleteButton.onclick = function(){
+                // this.parentNode.remove();
+                var deleteIndex = this.parentNode.id;
+                // console.log(deleteIndex);
+                storedList.splice(deleteIndex, 1);
+                localStorage.setItem("myCart", JSON.stringify(storedList));
+                document.location.reload();
+            };
+            deleteButton.innerHTML = "X";
+
             cartItem.appendChild(cartItemImg);
             cartItem.appendChild(cartItemTitle);
             cartItem.appendChild(cartItemFrosting);
-            // var emptyMessage = document.getElementById("empty");
-            // console.log(emptyMessage);
+            cartItem.appendChild(cartItemMethod);
+            cartItem.appendChild(cartItemQuantity);
+            cartItem.appendChild(cartItemPrice);
+            cartItem.appendChild(deleteButton);
+
             targetLocation.appendChild(cartItem);
         }
 
+        addTotalPrice(targetLocation);
+
     }
+}
+
+function addTotalPrice(targetLocation){
+    var storedList = JSON.parse(localStorage.getItem("myCart"));
+    for (var i = 0; i < storedList.length; i++) {
+        totalPrice += storedList[i].price;
+    }
+
+    var cartTotalPrice = document.createElement("h2");
+    cartTotalPrice.className = "total-price";
+    cartTotalPrice.innerHTML = ("Total: $" + totalPrice);
+    targetLocation.appendChild(cartTotalPrice);
+
 }
