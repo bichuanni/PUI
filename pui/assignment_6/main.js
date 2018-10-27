@@ -47,7 +47,7 @@ function methodChoice(item) {
 }
 
 // calculate price based on all three specified options on item detail page
-function checkPrice(){
+function checkPrice() {
     //update the new price based on users' current option choices
     if (frostingChosen === true && quantityChosen === true && methodChosen === true) {
         newPrice = preQuantityChoice.innerHTML * 3;
@@ -72,7 +72,6 @@ function toChart(item) {
         storedList.push(newItem);
         localStorage.setItem("myCart", JSON.stringify(storedList));
         countUpdate();// update the cart icon with current number of items in cart
-        console.log(localStorage.getItem("myCart"));
     } else {alert("Please specify all options")} // users not speficfying all options
 }
 
@@ -90,7 +89,6 @@ function toWhishList(item, where) {
         var newItem = {type: rollType, frosting: preFrostingChoice.innerHTML, quantity: preQuantityChoice.innerHTML, method: preMethodChoice.innerHTML, src: imgSrc, alt: imgAlt, price: newPrice};
         storedList.push(newItem);
         localStorage.setItem("myWishList", JSON.stringify(storedList));
-        console.log(localStorage.getItem("myWishList"));
     } else {alert("Please specify all options")} // users not speficfying all options
 }
 
@@ -121,7 +119,7 @@ function popupAnimation(item, where) {
     curpage.appendChild(popup);
 }
 
-function checkoutPageUpdate(){
+function checkoutPageUpdate() {
     countUpdate();
     getCartList();
     getWishList();
@@ -144,7 +142,6 @@ function countUpdate() {
 function getCartList() {
 // https://www.w3schools.com/jsref/event_onload.asp
     var storedList = JSON.parse(localStorage.getItem("myCart"));
-    console.log(storedList);
     if (storedList.length > 0 ) {
         document.getElementById("empty").remove();
 
@@ -209,7 +206,6 @@ function getCartList() {
 // retrive every wishlist item stored in the local storage
 function getWishList() {
     var storedList = JSON.parse(localStorage.getItem("myWishList"));
-    console.log(storedList);
     if (storedList.length > 0 ) {
         document.getElementById("empty").remove();
 
@@ -272,7 +268,7 @@ function getWishList() {
 }
 
 // calculate total price of items on the shopping cart page
-function addTotalPrice(targetLocation){
+function addTotalPrice(targetLocation) {
     var storedList = JSON.parse(localStorage.getItem("myCart"));
     for (var i = 0; i < storedList.length; i++) {
         totalPrice += storedList[i].price;
@@ -283,4 +279,12 @@ function addTotalPrice(targetLocation){
     cartTotalPrice.innerHTML = ("Total: $" + totalPrice);
     targetLocation.appendChild(cartTotalPrice);
 
+}
+
+// attempt on carousel function (not really working)
+function scrollRight() {
+    var carousel = document.getElementById("carousel");
+    console.log(carousel);
+
+    // carousel.
 }

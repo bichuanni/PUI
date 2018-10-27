@@ -168,7 +168,7 @@ h3 {
 /*---------------------------------------------------------------*/
 /*apply to all main content on detail page*/
 .detail {
-    margin: 3% 17% 7% 17%;
+    margin: 3% 17% 8% 17%;
     position: relative;
 }
 
@@ -305,6 +305,36 @@ h3 {
     20%  {right: 3%; opacity: 1}
     80%  {right: 3%; opacity: 1}
     100% {right: 3%; opacity: 0}
+}
+
+#carousel {
+    padding: 2% 35% 3% 25%;
+}
+
+.carousel-left {
+    color:gray;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    font-size: 30px;
+    left: 20%;
+    text-align: center;
+    top: 106%;
+}
+
+.carousel-right {
+    color:gray;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    font-size: 30px;
+    left: 50%;
+    text-align: center;
+    top: 106%;
+}
+
+#carousel img {
+    width: 100px;
+    height: 80px;
+    object-fit: cover;
 }
 /*---------------------------------------------------------------*/
 /********************** Browsing Page specific********************/
