@@ -13,6 +13,7 @@
 </head>
 
 <!-- https://www.w3schools.com/jsref/event_onload.asp -->
+<!-- makesure to update the shopping cart icon and shopping cart content every time the page loads -->
 <body onload="checkoutPageUpdate()">
     <div id="container">
         <section id="page_content">
@@ -42,11 +43,12 @@
             <div class="shoppingcartcontent">
                 <h1>Shopping Cart</h1>
                 <ol>
-                        <li>Method</li>
-                        <li>Quantity</li>
-                        <li>Price</li>
+                    <li>Method</li>
+                    <li>Quantity</li>
+                    <li>Price</li>
                 </ol>
                 <div class="horizaontal-line section-break"></div>
+                <!-- where retrived shopping cart items go -->
                 <div id="item-list">
                     <div id="empty"><br><br><br>Your shopping cart is currently empty<br><br><br><br></div>
                 </div>

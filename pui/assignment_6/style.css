@@ -277,6 +277,7 @@ h3 {
     font-size: 20px;
     font-weight: 400;
     height: 50px;
+    object-fit: cover;
     padding-left: 7%;
     padding-top: 2%;
     position: absolute;
@@ -476,12 +477,13 @@ h2 ol li {
     font-weight: 400;
     height: 30%;
     right: -40%;
-    /*width: 45%;*/
 }
 
 .cart-content img {
+    height: 150px;
     margin-bottom: 3%;
-    width: 22%;
+    object-fit: cover;
+    width: 200px;
 }
 
 .cart-content h3 {
@@ -521,6 +523,7 @@ h2 ol li {
 }
 
 .total-price {
+    text-align: right;
     font-size: 25px;
     font-style: italic;
 }
@@ -552,7 +555,7 @@ footer {
     color: rgb(78, 63, 144);
     background-color: rgb(213, 213, 227);
     height: 80px;
-    margin-top: -5px;
+    margin-top: 40px;
     padding: 35px 0px;
     position: absolute;
     width: 100%;

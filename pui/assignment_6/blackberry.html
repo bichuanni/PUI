@@ -7,9 +7,13 @@
     <title>Bun Bun Bake Shop</title>
     <!-- styles -->
     <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- javascript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="main.js" type="text/javascript"></script>
 </head>
 
-<body>
+<!-- make sure the shopping cart icon is up to date everytime the page is loaded -->
+<body onload="countUpdate()">
     <div id="container">
         <section id="page_content">
             <!-- stationary header/navgation section -->
@@ -23,7 +27,9 @@
                         <li><a href="location.html">LOCATIONS</a></li>
                     </ul>
                 </nav>
-                <img id="cart" src="img/cart.png" alt="cart icon">
+                <a href="shoppingcart.html">
+                    <img id="cart" src="img/cart.png" alt="cart icon">
+                </a>
                 <div class="signin">
                     <a href="#home">Sign in</a>
                 </div>
@@ -41,7 +47,7 @@
             <!-- main content -->
             <div class="detail">
                 <!-- left side of the screen -->
-                <img class="main-img" src="img/browsing3.jpg" alt="photo of blackberry cinnamon roll">
+                <img class="main-img" id="cur-main" src="img/browsing3.jpg" alt="photo of blackberry cinnamon roll">
                 <div class="img-overlay">
                     <div class="left-arrow" id="detial-l-box"></div>
                     <img src="img/left.png" id="detial-l-arrow" alt="left arrow icon">
@@ -61,26 +67,27 @@
                     <div class="horizaontal-line section-break"></div>
                     <h3>Frosting choice</h3>
                     <div class="two-col">
-                        <a class="button selection" href=#browsing.html>None</a>
-                        <a class="button selection" href=#browsing.html>Sugar-milk</a>
-                        <a class="button selection" href=#browsing.html>Vanilla milk</a>
-                        <a class="button selection" href=#browsing.html>Duoble chocolate</a>
+                        <a class="button selection" onclick="frostingChoice(this)">None</a>
+                        <a class="button selection" onclick="frostingChoice(this)">Sugar-milk</a>
+                        <a class="button selection" onclick="frostingChoice(this)">Vanilla milk</a>
+                        <a class="button selection" onclick="frostingChoice(this)">Duoble chocolate</a>
                     </div> <br>
                     <h3>Quantity</h3>
                     <div class="four-col">
-                        <a class="button selection" href=#browsing.html>1</a>
-                        <a class="button selection" href=#browsing.html>2</a>
-                        <a class="button selection" href=#browsing.html>3</a>
-                        <a class="button selection" href=#browsing.html>4</a>
+                        <a class="button selection" onclick="quantityChoice(this)">1</a>
+                        <a class="button selection" onclick="quantityChoice(this)">2</a>
+                        <a class="button selection" onclick="quantityChoice(this)">3</a>
+                        <a class="button selection" onclick="quantityChoice(this)">4</a>
                     </div> <br>
                     <div class="horizaontal-line section-break"></div>
                     <h3>Method</h3>
                     <div class="two-col">
-                        <a class="button selection" href=#browsing.html>In-store Pickup</a>
-                        <a class="button selection" href=#browsing.html>Delivery</a>
+                        <a class="button selection" onclick="methodChoice(this)">In-store Pickup</a>
+                        <a class="button selection" onclick="methodChoice(this)">Delivery</a>
                     </div> <br>
+                    <div id="price">Price: $ .- </div>
                     <div class="one-col">
-                        <a class="button selection" href=#browsing.html>Add to Cart</a>
+                        <a class="button selection" onclick="toChart(this)">Add to Cart</a>
                     </div> <br>
                 </div>
             </div>
