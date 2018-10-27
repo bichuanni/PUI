@@ -168,7 +168,7 @@ h3 {
 /*---------------------------------------------------------------*/
 /*apply to all main content on detail page*/
 .detail {
-    margin: 3% 17%;
+    margin: 3% 17% 7% 17%;
     position: relative;
 }
 
@@ -257,6 +257,11 @@ h3 {
     display: grid;
     grid-template-columns: 40px 40px 40px 40px;
     grid-gap: 10px 34px;
+}
+
+#wishlist {
+    background-color: rgb(213, 213, 227);
+    color: rgb(78, 63, 144);
 }
 
 #price {
@@ -557,7 +562,7 @@ footer {
     color: rgb(78, 63, 144);
     background-color: rgb(213, 213, 227);
     height: 80px;
-    margin-top: 40px;
+    margin-top: -4px;
     padding: 35px 0px;
     position: absolute;
     width: 100%;

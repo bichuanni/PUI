@@ -64,7 +64,7 @@ function toChart(item) {
     } //edge case when there is noting in storage, initiate an array
 
     if (frostingChosen === true && quantityChosen === true && methodChosen === true) {
-        cartAnimation(item);// play animation
+        popupAnimation(item, "cart");// play animation
         var rollType = document.getElementsByTagName("h1")[0].innerHTML;
         var imgSrc = document.getElementById("cur-main").getAttribute("src");
         var imgAlt = document.getElementById("cur-main").getAttribute("alt");
@@ -74,11 +74,28 @@ function toChart(item) {
         countUpdate();// update the cart icon with current number of items in cart
         console.log(localStorage.getItem("myCart"));
     } else {alert("Please specify all options")} // users not speficfying all options
+}
 
+function toWhishList(item, where) {
+    var storedList = JSON.parse(localStorage.getItem("myWishList"));
+    if (storedList === null){
+        storedList = [];
+    } //edge case when there is noting in storage, initiate an array
+
+    if (frostingChosen === true && quantityChosen === true && methodChosen === true) {
+        popupAnimation(item, "wishlist");// play animation
+        var rollType = document.getElementsByTagName("h1")[0].innerHTML;
+        var imgSrc = document.getElementById("cur-main").getAttribute("src");
+        var imgAlt = document.getElementById("cur-main").getAttribute("alt");
+        var newItem = {type: rollType, frosting: preFrostingChoice.innerHTML, quantity: preQuantityChoice.innerHTML, method: preMethodChoice.innerHTML, src: imgSrc, alt: imgAlt, price: newPrice};
+        storedList.push(newItem);
+        localStorage.setItem("myWishList", JSON.stringify(storedList));
+        console.log(localStorage.getItem("myWishList"));
+    } else {alert("Please specify all options")} // users not speficfying all options
 }
 
 // animation for successfully adding item to cart
-function cartAnimation(item) {
+function popupAnimation(item, where) {
 // https://stackoverflow.com/questions/5677799/how-to-append-data-to-div-using-javascript
 // https://stackoverflow.com/questions/7802744/adding-an-img-element-to-a-div-with-javascript
 // https://www.w3schools.com/jsref/met_element_getattribute.asp
@@ -95,7 +112,11 @@ function cartAnimation(item) {
     productImg.alt = imgAlt;
 
     popup.appendChild(productImg);
-    popup.innerHTML += "Item Added to Cart";
+    if (where === "cart") {
+        popup.innerHTML += "Item Added to Cart";
+    } else {
+        popup.innerHTML += "Added to Wishlist";
+    }
 
     curpage.appendChild(popup);
 }
