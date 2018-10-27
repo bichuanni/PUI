@@ -51,7 +51,7 @@ function methodChoice(item) {
 function checkPrice(){
     //update the new price based on users' current option choices
     if (frostingChosen === true && quantityChosen === true && methodChosen === true) {
-        newPrice = preQuantityChoice.innerHTML * 3.33;
+        newPrice = preQuantityChoice.innerHTML * 3;
         var prePrice = document.getElementById("price");
         prePrice.innerHTML = ("Price: $ " + newPrice);
     }
@@ -72,6 +72,7 @@ function toChart(item) {
         var newItem = {type: rollType, frosting: preFrostingChoice.innerHTML, quantity: preQuantityChoice.innerHTML, method: preMethodChoice.innerHTML, src: imgSrc, alt: imgAlt, price: newPrice};
         storedList.push(newItem);
         localStorage.setItem("myCart", JSON.stringify(storedList));
+        countUpdate();
         console.log(localStorage.getItem("myCart"));
     } else {alert("Please specify all options")}
 
@@ -97,6 +98,23 @@ function cartAnimation(item) {
     popup.innerHTML += "Item Added to Cart";
 
     curpage.appendChild(popup);
+}
+
+function checkoutPageUpdate(){
+    countUpdate();
+    getList();
+}
+
+function countUpdate() {
+    var curpage = document.getElementById("container");
+    var storedList = JSON.parse(localStorage.getItem("myCart"));
+
+    var curNum = storedList.length;
+    var count = document.createElement("div");
+    count.id = "count";
+    count.innerHTML = curNum;
+
+    curpage.appendChild(count);
 }
 
 function getList() {
@@ -134,7 +152,7 @@ function getList() {
 
             var cartItemPrice = document.createElement("h2");
             cartItemPrice.id = "cart-price";
-            cartItemPrice.innerHTML = storedList[i].price;
+            cartItemPrice.innerHTML = "$ " + storedList[i].price;
 
             //add delete button
             // https://stackoverflow.com/questions/7066191/javascript-onclick-onsubmit-for-dynamically-created-button
