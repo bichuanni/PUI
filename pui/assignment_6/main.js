@@ -206,15 +206,14 @@ function getCartList() {
     }
 }
 
-// retrive every info stored in the local storage about things that user want to purchase
+// retrive every wishlist item stored in the local storage
 function getWishList() {
-// https://www.w3schools.com/jsref/event_onload.asp
     var storedList = JSON.parse(localStorage.getItem("myWishList"));
     console.log(storedList);
     if (storedList.length > 0 ) {
         document.getElementById("empty").remove();
 
-        //add shopping cart items at the correct location on the current page
+        //display wishlist cart items at the correct location on the current page
         for (var i = 0; i < storedList.length; i++) {
             var targetLocation = document.getElementById("wishlist-list");
             var wlItem = document.createElement("div");
@@ -227,7 +226,6 @@ function getWishList() {
             wlItemImg.alt = storedList[i].alt;
 
             var wlItemTitle = document.createElement("h2");
-            // wlItemFrosting.className = "wl-option";
             wlItemTitle.innerHTML = storedList[i].type;
 
             var wlItemFrosting = document.createElement("h2");
@@ -250,14 +248,10 @@ function getWishList() {
             wlItemPrice.id = "cart-price";
             wlItemPrice.innerHTML = "$ " + storedList[i].price;
 
-            //add delete button with attached delete function
-            // https://stackoverflow.com/questions/7066191/javascript-onclick-onsubmit-for-dynamically-created-button
             var deleteButton = document.createElement("button");
             deleteButton.className = "delete-item";
             deleteButton.onclick = function(){
-                // this.parentNode.remove();
                 var deleteIndex = this.parentNode.id;
-                // console.log(deleteIndex);
                 storedList.splice(deleteIndex, 1);
                 localStorage.setItem("myWishList", JSON.stringify(storedList));
                 document.location.reload();
