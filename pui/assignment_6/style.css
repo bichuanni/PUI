@@ -293,6 +293,7 @@ h3 {
     width: 20%;
 }
 
+/*animation inspiration from:*/
 /*https://www.w3schools.com/css/css3_animations.asp*/
 @keyframes slidein {
     0%   {right: -40%; opacity: 0}

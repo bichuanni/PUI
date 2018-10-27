@@ -1,8 +1,3 @@
-// $(document).ready(()=>{
-//     console.log("rady");
-
-// })
-
 var preFrostingChoice;
 var preQuantityChoice;
 var preMethodChoice;
@@ -12,6 +7,7 @@ var methodChosen = false;
 var newPrice;
 var totalPrice = 0;
 
+// keep track of current frosting choice
 function frostingChoice(item) {
     frostingChosen = true;
     if (typeof preFrostingChoice !== 'undefined'){
@@ -24,6 +20,7 @@ function frostingChoice(item) {
     checkPrice();
 }
 
+// keep track of current quantity choice
 function quantityChoice(item) {
     quantityChosen = true;
     if (typeof preQuantityChoice !== 'undefined'){
@@ -36,6 +33,7 @@ function quantityChoice(item) {
     checkPrice();
 }
 
+// keep track of current delivery method choice
 function methodChoice(item) {
     methodChosen = true;
     if (typeof preMethodChoice !== 'undefined'){
@@ -48,6 +46,7 @@ function methodChoice(item) {
     checkPrice();
 }
 
+// calculate price based on all three specified options on item detail page
 function checkPrice(){
     //update the new price based on users' current option choices
     if (frostingChosen === true && quantityChosen === true && methodChosen === true) {
@@ -65,19 +64,20 @@ function toChart(item) {
     } //edge case when there is noting in storage, initiate an array
 
     if (frostingChosen === true && quantityChosen === true && methodChosen === true) {
-        cartAnimation(item);
+        cartAnimation(item);// play animation
         var rollType = document.getElementsByTagName("h1")[0].innerHTML;
         var imgSrc = document.getElementById("cur-main").getAttribute("src");
         var imgAlt = document.getElementById("cur-main").getAttribute("alt");
         var newItem = {type: rollType, frosting: preFrostingChoice.innerHTML, quantity: preQuantityChoice.innerHTML, method: preMethodChoice.innerHTML, src: imgSrc, alt: imgAlt, price: newPrice};
         storedList.push(newItem);
         localStorage.setItem("myCart", JSON.stringify(storedList));
-        countUpdate();
+        countUpdate();// update the cart icon with current number of items in cart
         console.log(localStorage.getItem("myCart"));
-    } else {alert("Please specify all options")}
+    } else {alert("Please specify all options")} // users not speficfying all options
 
 }
 
+// animation for successfully adding item to cart
 function cartAnimation(item) {
 // https://stackoverflow.com/questions/5677799/how-to-append-data-to-div-using-javascript
 // https://stackoverflow.com/questions/7802744/adding-an-img-element-to-a-div-with-javascript
@@ -105,6 +105,7 @@ function checkoutPageUpdate(){
     getList();
 }
 
+//update the cart icon with current number of items in cart
 function countUpdate() {
     var curpage = document.getElementById("container");
     var storedList = JSON.parse(localStorage.getItem("myCart"));
@@ -117,6 +118,7 @@ function countUpdate() {
     curpage.appendChild(count);
 }
 
+// retrive every info stored in the local storage about things that user want to purchase
 function getList() {
 // https://www.w3schools.com/jsref/event_onload.asp
     var storedList = JSON.parse(localStorage.getItem("myCart"));
@@ -154,7 +156,7 @@ function getList() {
             cartItemPrice.id = "cart-price";
             cartItemPrice.innerHTML = "$ " + storedList[i].price;
 
-            //add delete button
+            //add delete button with attached delete function
             // https://stackoverflow.com/questions/7066191/javascript-onclick-onsubmit-for-dynamically-created-button
             var deleteButton = document.createElement("button");
             deleteButton.className = "delete-item";
@@ -179,11 +181,13 @@ function getList() {
             targetLocation.appendChild(cartItem);
         }
 
+        // calculate new total price of items in the cart
         addTotalPrice(targetLocation);
 
     }
 }
 
+// calculate total price of items on the shopping cart page
 function addTotalPrice(targetLocation){
     var storedList = JSON.parse(localStorage.getItem("myCart"));
     for (var i = 0; i < storedList.length; i++) {
