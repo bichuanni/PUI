@@ -123,7 +123,8 @@ function popupAnimation(item, where) {
 
 function checkoutPageUpdate(){
     countUpdate();
-    getList();
+    getCartList();
+    getWishList();
 }
 
 //update the cart icon with current number of items in cart
@@ -140,7 +141,7 @@ function countUpdate() {
 }
 
 // retrive every info stored in the local storage about things that user want to purchase
-function getList() {
+function getCartList() {
 // https://www.w3schools.com/jsref/event_onload.asp
     var storedList = JSON.parse(localStorage.getItem("myCart"));
     console.log(storedList);
@@ -182,9 +183,7 @@ function getList() {
             var deleteButton = document.createElement("button");
             deleteButton.className = "delete-item";
             deleteButton.onclick = function(){
-                // this.parentNode.remove();
                 var deleteIndex = this.parentNode.id;
-                // console.log(deleteIndex);
                 storedList.splice(deleteIndex, 1);
                 localStorage.setItem("myCart", JSON.stringify(storedList));
                 document.location.reload();
@@ -204,7 +203,77 @@ function getList() {
 
         // calculate new total price of items in the cart
         addTotalPrice(targetLocation);
+    }
+}
 
+// retrive every info stored in the local storage about things that user want to purchase
+function getWishList() {
+// https://www.w3schools.com/jsref/event_onload.asp
+    var storedList = JSON.parse(localStorage.getItem("myWishList"));
+    console.log(storedList);
+    if (storedList.length > 0 ) {
+        document.getElementById("empty").remove();
+
+        //add shopping cart items at the correct location on the current page
+        for (var i = 0; i < storedList.length; i++) {
+            var targetLocation = document.getElementById("wishlist-list");
+            var wlItem = document.createElement("div");
+            wlItem.className = "wl-content";
+            wlItem.id = i;
+
+            var wlItemImg = document.createElement("img");
+            wlItemImg.className = "wl-content";
+            wlItemImg.src = storedList[i].src;
+            wlItemImg.alt = storedList[i].alt;
+
+            var wlItemTitle = document.createElement("h2");
+            // wlItemFrosting.className = "wl-option";
+            wlItemTitle.innerHTML = storedList[i].type;
+
+            var wlItemFrosting = document.createElement("h2");
+            wlItemFrosting.className = "wl-option";
+            wlItemFrosting.id = "wl-frosting";
+            wlItemFrosting.innerHTML = ("w/ " + storedList[i].frosting + " frosting");
+
+            var wlItemMethod = document.createElement("h2");
+            wlItemFrosting.className = "wl-option";
+            wlItemMethod.id = "wl-method";
+            wlItemMethod.innerHTML = storedList[i].method;
+
+            var wlItemQuantity = document.createElement("h2");
+            wlItemFrosting.className = "wl-option";
+            wlItemQuantity.id = "wl-quantity";
+            wlItemQuantity.innerHTML = storedList[i].quantity;
+
+            var wlItemPrice = document.createElement("h2");
+            wlItemFrosting.className = "wl-option";
+            wlItemPrice.id = "cart-price";
+            wlItemPrice.innerHTML = "$ " + storedList[i].price;
+
+            //add delete button with attached delete function
+            // https://stackoverflow.com/questions/7066191/javascript-onclick-onsubmit-for-dynamically-created-button
+            var deleteButton = document.createElement("button");
+            deleteButton.className = "delete-item";
+            deleteButton.onclick = function(){
+                // this.parentNode.remove();
+                var deleteIndex = this.parentNode.id;
+                // console.log(deleteIndex);
+                storedList.splice(deleteIndex, 1);
+                localStorage.setItem("myWishList", JSON.stringify(storedList));
+                document.location.reload();
+            };
+            deleteButton.innerHTML = "X";
+
+            wlItem.appendChild(wlItemImg);
+            wlItem.appendChild(wlItemTitle);
+            wlItem.appendChild(wlItemFrosting);
+            wlItem.appendChild(wlItemMethod);
+            wlItem.appendChild(wlItemQuantity);
+            wlItem.appendChild(wlItemPrice);
+            wlItem.appendChild(deleteButton);
+
+            targetLocation.appendChild(wlItem);
+        }
     }
 }
 
