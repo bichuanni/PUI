@@ -281,7 +281,8 @@ h3 {
     padding-left: 7%;
     padding-top: 2%;
     position: absolute;
-    right: -40%;
+    right: 3%;
+    opacity: 0;
     top: 10%;
     width: 14%;
 }
@@ -294,10 +295,10 @@ h3 {
 
 /*https://www.w3schools.com/css/css3_animations.asp*/
 @keyframes slidein {
-    0%   {right: -40%;}
-    20%  {right: 5%;}
-    80%  {right: 5%;}
-    100% {right: -40%;}
+    0%   {right: -40%; opacity: 0}
+    20%  {right: 3%; opacity: 1}
+    80%  {right: 3%; opacity: 1}
+    100% {right: 3%; opacity: 0}
 }
 /*---------------------------------------------------------------*/
 /********************** Browsing Page specific********************/
