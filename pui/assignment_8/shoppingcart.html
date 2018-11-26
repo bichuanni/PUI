@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <!-- https://stackoverflow.com/questions/17935819/why-is-this-html5-document-invalid -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bun Bun Bake Shop</title>
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- javascript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="main.js" type="text/javascript"></script>
+</head>
+
+<!-- https://www.w3schools.com/jsref/event_onload.asp -->
+<!-- makesure to update the shopping cart icon and shopping cart content every time the page loads -->
+<body onload="checkoutPageUpdate()">
+    <div id="container">
+        <section id="page_content">
+            <!-- stationary header/navgation section -->
+            <header id="header">
+                <img id="logo" src="img/logo.png" alt="company icon">
+                <h2 class="site-name">Bun Bun Bake Shop</h2>
+                <nav>
+                    <ul class="nav">
+                        <li><a href="home.html">HOME</a></li>
+                        <li><a href="browsing.html">SIGNATURE ROLLS</a></li>
+                        <li><a href="location.html">LOCATIONS</a></li>
+                    </ul>
+                </nav>
+                <a href="shoppingcart.html">
+                    <img id="cart" src="img/cart.png" alt="cart icon">
+                </a>
+                <div class="signin">
+                    <a href="#home">Sign in</a>
+                </div>
+                <!-- decorational lines -->
+                <div class="vertical-line divider1"></div>
+                <div class="vertical-line divider2"></div>
+            </header>
+            <!-- line to devide header and main content -->
+            <div class="horizaontal-line"></div>
+
+            <!-- main content -->
+            <div class="shoppingcartcontent">
+                <h1>Shopping Cart</h1>
+                <ol>
+                    <li>Method</li>
+                    <li>Quantity</li>
+                    <li>Price</li>
+                </ol>
+                <div class="horizaontal-line section-break"></div>
+                <!-- where retrived shopping cart items go -->
+                <div id="item-list">
+                    <div id="empty"><br><br><br>Your shopping cart is currently empty<br><br><br><br></div>
+                </div>
+                <div class="horizaontal-line section-break"></div>
+                <a href="browsing.html" class="button selection">Continue Shopping</a>
+                <a href="#home" class="button selection checkout">Place Order</a>
+            </div>
+
+            <div class="wishlistcontent">
+                <h1>My Wishlist</h1>
+                <div class="horizaontal-line section-break"></div>
+                <!-- where retrived shopping cart items go -->
+                <div id="wishlist-list">
+                    <div id="empty"><br><br><br>Your wishlist is currently empty<br><br><br><br></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <div>Team</div>
+            <div>FAQ</div>
+            <div>About Us</div>
+            <div>News</div>
+            <div>Ingredients</div>
+            <div>Contact</div>
+        </div>
+        <a href="#home">
+            <img src="img/social.png" class="social" alt="social media icons">
+        </a>
+    </footer>
+</body>
+
+</html>
