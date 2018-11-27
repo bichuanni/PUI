@@ -1,53 +1,96 @@
-// $.fn.moveIt = function(){
-//   var $window = $(window);
-//   var instances = [];
 
-//   $(this).each(function(){
-//     instances.push(new moveItItem($(this)));
-//   });
-
-//   window.addEventListener('scroll', function(){
-//     var scrollTop = $window.scrollTop();
-//     instances.forEach(function(inst){
-//       inst.update(scrollTop);
-//     });
-//   }, {passive: true});
-// }
-
-// var moveItItem = function(el){
-//   this.el = $(el);
-//   this.speed = parseInt(this.el.attr('data-scroll-speed'));
-// };
-
-// moveItItem.prototype.update = function(scrollTop){
-//   this.el.css('transform', 'translateY(' + -(scrollTop / this.speed) + 'px)');
-// };
-
-// // Initialization
-// $(function(){
-//   $('[data-scroll-speed]').moveIt();
+// window.addEventListener('scroll', function() {
+//   document.getElementById('showScroll').innerHTML = pageYOffset + 'px';
 // });
-
-window.addEventListener('scroll', function() {
-  document.getElementById('showScroll').innerHTML = pageYOffset + 'px';
-});
 
 
 var runtime = 5000;
+var curState = "collection";
+var scrollUpAnim;
+var scrollDownAnim;
 
 function countUpdate (){
-  // autoup();
-  // autodown();
+  autoup();
+  autodown();
 
+}
+
+function stateValidator (newState){
+  if (curState == "collection"){
+    runwayExitRight();
+    runwayExitLeft();
+    detailEnter();
+    curState = "detail";
+  }
+
+}
+
+function detailEnter(){
+  var colorchange = anime({
+    targets: 'body',
+    backgroundColor: '#1E2531',
+    duration: 1000
+  });
+
+  scrollUpAnim = anime({
+    targets: '#autoup',
+    translateX: [0, -w],
+    opacity: 0,
+    easing: 'linear',
+    duration: 1000
+    // loop: true
+  });
+}
+
+function runwayExitLeft(){
+  scrollUpAnim.pause();
+  var w = window.innerWidth;
+
+  scrollUpAnim = anime({
+    targets: '#autoup',
+    translateX: [0, -w],
+    opacity: 0,
+    easing: 'linear',
+    duration: 1000
+    // loop: true
+  });
+
+  // scrollDownAnim.add({
+  //   targets: '#autodown',
+  //   translateX: [0, w]
+  // });
+}
+
+function runwayExitRight(){
+  scrollDownAnim.pause();
+  var w = window.innerWidth;
+  var offset = document.getElementById('autodown').style.transform;
+  document.getElementById('autodown').style.transform = offset;
+  // var offset = maxscroll - imgHeight*3/4;
+  // console.log(offset);
+
+  scrollDownAnim = anime({
+    targets: '#autodown',
+    translateX: [0, w],
+    opacity: 0,
+    easing: 'linear',
+    duration: 1000
+    // loop: true
+  });
+
+  // scrollDownAnim.add({
+  //   targets: '#autodown',
+  //   translateX: [0, w]
+  // });
 }
 
 function autoup(){
   var maxscroll = document.getElementById('autoup').offsetHeight;
   var imgHeight = document.getElementById('identifier1').offsetHeight;
   var offset = maxscroll - imgHeight;
-  console.log(imgHeight);
+  // console.log(imgHeight);
 
-  var keyframes = anime({
+  scrollUpAnim = anime({
     targets: '#autoup',
     translateY: [0, -offset],
     easing: 'linear',
@@ -60,14 +103,17 @@ function autodown(){
   var maxscroll = document.getElementById('autodown').offsetHeight;
   var imgHeight = document.getElementById('identifier2').offsetHeight;
   var offset = maxscroll - imgHeight*3/4;
-  console.log(imgHeight);
+  // console.log(imgHeight);
 
-  var keyframes = anime({
+  scrollDownAnim = anime({
     targets: '#autodown',
     translateY: [-offset, 0],
     easing: 'linear',
-    duration: runtime
+    duration: runtime,
     // loop: true
+    complete: function(anim) {
+      console.log("anim.completed");
+    }
   });
 }
 

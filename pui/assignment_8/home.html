@@ -22,19 +22,19 @@
 <body onload="countUpdate()">
     <div class="container">
             <div class="col-1">
-                <div class="header linkhover"><a href="home.html">Collection</a></div>
+                <div class="header linkhover" onclick="stateValidator()"><a href="home.html">Collection</a></div>
             </div>
             <div class="col-2">
-                <div class="header linkhover"><a href="home.html">Detail</a></div>
+                <div class="header linkhover" onclick="stateValidator('detail')">Detail</div>
             </div>
             <div class="col-3">
-                <div class="header linkhover"><a href="home.html">About</a></div>
+                <div class="header linkhover" onclick="stateValidator()"><a href="home.html">Artists</a></div>
             </div>
             <!-- Highlight -->
             <div class="highlight-look linkhover"><a href="home.html">Highlight Looks</a></div>
             <!-- <div class="linkhover"></div> -->
             <div class="name">Shuangni Huang</div>
-            <div class="logo">INERTIA</div>
+            <h1>INERTIA</h1>
 
             <div id="collection">
                 <div class="col-4 runway" id="autoup">
@@ -52,6 +52,11 @@
                     <img src="Assets/img/collection/9.jpg" alt="look 9">
                     <img src="Assets/img/collection/10.jpg" alt="look 10">
                 </div>
+            </div>
+
+            <div id="detail">
+                <div class="detailcontent">
+                <h3>Inertia is a collection based on an imaginary future society in which people refuses to change. The specific looks are designed to function as uniforms for the inhabitants of this alternative future. Thus, they imply a sense of “fashion communism” and a core value of supreme efficiency. In reach look, a flow material is contained by a stiff fabric (patent leather or denim), to convey the oppression from the society.</h3></div>
             </div>
 
 
