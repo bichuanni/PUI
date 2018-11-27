@@ -8,21 +8,45 @@ var runtime = 5000;
 var curState = "collection";
 var scrollUpAnim;
 var scrollDownAnim;
+var scrollLeftAnim;
+var scrollRightAnim;
 
 function countUpdate (){
   autoup();
   autodown();
 
+  document.getElementById('nav0').style.textDecoration = 'underline';
+
 }
 
 function stateValidator (newState){
+
   if (curState == "collection"){
     runwayExit();
     // runwayExitLeft();
     detailEnter();
-    curState = "detail";
   }
 
+  if (curState = "detail"){
+    document.getElementById('collection').style.display = 'initial';
+  }
+
+  curState = newState;
+  resetUnderline(curState);
+
+}
+
+function resetUnderline(curState){
+  for (var i = 0; i < 3; i ++){
+    document.getElementById('nav'+i).style.textDecoration = 'none';
+  }
+  if (curState == 'collection'){
+    document.getElementById('nav0').style.textDecoration = 'underline';
+  } else if (curState == 'detail'){
+    document.getElementById('nav1').style.textDecoration = 'underline';
+  } else {
+    document.getElementById('nav2').style.textDecoration = 'underline';
+  }
 }
 
 function detailEnter(){
@@ -51,7 +75,7 @@ function runwayExit(){
   // var offset = maxscroll - imgHeight*3/4;
   // console.log(offset);
 
-  scrollUpAnim = anime({
+  scrollLeftAnim = anime({
     targets: '#autoup',
     translateX: [0, -w],
     opacity: 0,
@@ -59,7 +83,7 @@ function runwayExit(){
     duration: 1000
   });
 
-  scrollDownAnim = anime({
+  scrollRightAnim = anime({
     targets: '#autodown',
     translateX: [0, w],
     opacity: 0,
