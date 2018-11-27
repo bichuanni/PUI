@@ -31,3 +31,43 @@
 window.addEventListener('scroll', function() {
   document.getElementById('showScroll').innerHTML = pageYOffset + 'px';
 });
+
+
+var runtime = 5000;
+
+function countUpdate (){
+  // autoup();
+  // autodown();
+
+}
+
+function autoup(){
+  var maxscroll = document.getElementById('autoup').offsetHeight;
+  var imgHeight = document.getElementById('identifier1').offsetHeight;
+  var offset = maxscroll - imgHeight;
+  console.log(imgHeight);
+
+  var keyframes = anime({
+    targets: '#autoup',
+    translateY: [0, -offset],
+    easing: 'linear',
+    duration: runtime
+    // loop: true
+  });
+}
+
+function autodown(){
+  var maxscroll = document.getElementById('autodown').offsetHeight;
+  var imgHeight = document.getElementById('identifier2').offsetHeight;
+  var offset = maxscroll - imgHeight*3/4;
+  console.log(imgHeight);
+
+  var keyframes = anime({
+    targets: '#autodown',
+    translateY: [-offset, 0],
+    easing: 'linear',
+    duration: runtime
+    // loop: true
+  });
+}
+

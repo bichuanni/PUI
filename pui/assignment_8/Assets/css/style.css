@@ -82,35 +82,29 @@ body, html {
     padding: 15% 0% 15% 0%;
 }
 
-.autoup {
-    animation-duration: 15s;
+/*.autoup {
+    animation-duration: 5s;
     animation-name: autoup;
     top: -285%;
-    /*opacity: 0.8;*/
-    /*position: absolute;*/
 }
 
 @keyframes autoup {
     0%   {top: 0%}
     10%  {top: 0%}
-    /*80%  {top: 3%}*/
     100% {top: -285%}
 }
-
-.autodown {
-    animation-duration: 15s;
+*/
+/*#autodown {
+    animation-duration: 5s;
     animation-name: autodown;
-    /*top: -285%;*/
     top: -4%;
-    /*position: absolute;*/
 }
 
 @keyframes autodown {
     0%   {top: -610%}
     10%  {top: -610%}
-    /*80%  {top: 3%}*/
     100% {top: -4%}
-}
+}*/
 
 img {
     width: 100%;
