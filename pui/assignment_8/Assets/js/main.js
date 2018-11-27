@@ -32,14 +32,14 @@ function detailEnter(){
     duration: 1000
   });
 
-  scrollUpAnim = anime({
-    targets: '#autoup',
-    translateX: [0, -w],
-    opacity: 0,
-    easing: 'linear',
-    duration: 1000
-    // loop: true
+  var fadeIn = anime({
+    targets: '#detailmain',
+    opacity: [0, 1],
+    delay: 500,
+    duration: 1500
   });
+
+
 }
 
 function runwayExitLeft(){
@@ -64,6 +64,7 @@ function runwayExitLeft(){
 function runwayExitRight(){
   scrollDownAnim.pause();
   var w = window.innerWidth;
+  // var curStyle = document.getElementById('autodown').style;
   var offset = document.getElementById('autodown').style.transform;
   document.getElementById('autodown').style.transform = offset;
   // var offset = maxscroll - imgHeight*3/4;
@@ -74,7 +75,10 @@ function runwayExitRight(){
     translateX: [0, w],
     opacity: 0,
     easing: 'linear',
-    duration: 1000
+    duration: 1000,
+    complete: function(anim) {
+      document.getElementById('collection').style.display = 'none';
+    }
     // loop: true
   });
 

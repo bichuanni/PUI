@@ -106,6 +106,17 @@ h1 {
     100% {top: -4%}
 }*/
 
+#detail {
+    margin-left: 25px;
+    margin-right: 45px;
+}
+
+#detailmain {
+    margin-top: 15%;
+
+    /*width: 92%;*/
+}
+
 img {
     width: 100%;
     /*left: 10%;*/
@@ -131,6 +142,10 @@ container-fluid {
     position: relative;
 }*/
 
+.hidden {
+    display: none;
+}
+
 
 h2 {
     color: white;
@@ -141,15 +156,14 @@ h2 {
     padding: 0;
 }
 
-.detailcontent {position: absolute; bottom: -10px; left: 30%; width: 60%;}
+.detailcontent {position: absolute; bottom: -10px; left: 30%; width: 62%;}
 
 h3 {
     color: white;
 
     font-size: 17px;
-    font-weight: 300;
+    font-weight: 400;
     margin: 0;
-    margin-left: 1%;
     padding: 0;
 }
 
