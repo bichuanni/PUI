@@ -17,8 +17,8 @@ function countUpdate (){
 
 function stateValidator (newState){
   if (curState == "collection"){
-    runwayExitRight();
-    runwayExitLeft();
+    runwayExit();
+    // runwayExitLeft();
     detailEnter();
     curState = "detail";
   }
@@ -42,9 +42,14 @@ function detailEnter(){
 
 }
 
-function runwayExitLeft(){
+function runwayExit(){
+  scrollDownAnim.pause();
   scrollUpAnim.pause();
   var w = window.innerWidth;
+  // var offset = document.getElementById('autodown').style.transform;
+  // document.getElementById('autodown').style.transform = offset;
+  // var offset = maxscroll - imgHeight*3/4;
+  // console.log(offset);
 
   scrollUpAnim = anime({
     targets: '#autoup',
@@ -52,23 +57,7 @@ function runwayExitLeft(){
     opacity: 0,
     easing: 'linear',
     duration: 1000
-    // loop: true
   });
-
-  // scrollDownAnim.add({
-  //   targets: '#autodown',
-  //   translateX: [0, w]
-  // });
-}
-
-function runwayExitRight(){
-  scrollDownAnim.pause();
-  var w = window.innerWidth;
-  // var curStyle = document.getElementById('autodown').style;
-  var offset = document.getElementById('autodown').style.transform;
-  document.getElementById('autodown').style.transform = offset;
-  // var offset = maxscroll - imgHeight*3/4;
-  // console.log(offset);
 
   scrollDownAnim = anime({
     targets: '#autodown',
@@ -79,13 +68,7 @@ function runwayExitRight(){
     complete: function(anim) {
       document.getElementById('collection').style.display = 'none';
     }
-    // loop: true
   });
-
-  // scrollDownAnim.add({
-  //   targets: '#autodown',
-  //   translateX: [0, w]
-  // });
 }
 
 function autoup(){
