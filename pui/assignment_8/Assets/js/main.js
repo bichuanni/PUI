@@ -41,18 +41,21 @@ function defineAnime(){
   detailSlideRight = anime({
     targets: '.subTitle',
     translateX: [-200, 0],
-    direction: 'reverse',
-    delay: 500,
-    duration: 1500
-  });
-
-  detailSlideUp = anime({
-    targets: '.detailcontent',
-    translateY: [200, 0],
-    opacity: [0, 1],
+    easing: 'easeOutExpo',
     direction: 'reverse',
     delay: 500,
     duration: 1500,
+    autoplay: false
+  });
+
+  detailSlideUp = anime({
+    targets: '.detail-content',
+    translateY: [200, 0],
+    opacity: [0, 1],
+    easing: 'easeOutExpo',
+    direction: 'reverse',
+    delay: 500,
+    duration: 1000,
     autoplay: false
   });
 
@@ -131,8 +134,6 @@ function stateValidator (newState){
       runwayExit("show");
     }
   }
-
-
 
   curState = newState;
   resetUnderline(curState);
