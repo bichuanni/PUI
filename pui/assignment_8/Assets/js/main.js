@@ -29,6 +29,7 @@ function defineAnime(){
   darkenBackground = anime({
     targets: 'body',
     backgroundColor: '#1E2531',
+    direction: 'reverse',
     duration: 1000,
     autoplay: false
   });
@@ -36,6 +37,7 @@ function defineAnime(){
   detailSlideRight = anime({
     targets: '.subTitle',
     translateX: [-200, 0],
+    direction: 'reverse',
     delay: 500,
     duration: 1500,
     autoplay: false
@@ -44,6 +46,7 @@ function defineAnime(){
   detailSlideUp = anime({
     targets: '.detailcontent',
     translateY: [200, 0],
+    direction: 'reverse',
     delay: 500,
     duration: 1500,
     autoplay: false
@@ -52,6 +55,7 @@ function defineAnime(){
   detailFadeIn = anime({
     targets: '#detailmain',
     opacity: [0, 1],
+    direction: 'reverse',
     delay: 500,
     duration: 1500,
     autoplay: false
@@ -63,7 +67,7 @@ function stateValidator (newState){
     if (newState == "detail"){
       runwayExit();
       document.getElementById('detail').style.display = 'block';
-      detailEnter();
+      playDetailAnime();
 
     }
     // $('body').removeClass('stop-scrolling');
@@ -71,7 +75,8 @@ function stateValidator (newState){
 
   else if (curState = "detail"){
     if (newState == "collection"){
-      detailExit();
+      playDetailAnime();
+
 
       document.getElementById('collection').style.display = 'initial';
     }
@@ -79,6 +84,7 @@ function stateValidator (newState){
 
   curState = newState;
   resetUnderline(curState);
+  detailReverse();
 
 }
 
@@ -95,27 +101,18 @@ function resetUnderline(curState){
   }
 }
 
-function detailExit(){
-  console.log("exit fired");
+function detailReverse(){
   darkenBackground.reverse();
   detailSlideRight.reverse();
   detailSlideUp.reverse();
   detailFadeIn.reverse();
-  darkenBackground.play();
-  detailSlideRight.play();
-  detailSlideUp.play();
-  detailFadeIn.play();
-
-
 }
 
-function detailEnter(){
-  console.log("entered");
+function playDetailAnime(){
   darkenBackground.play();
   detailSlideRight.play();
   detailSlideUp.play();
   detailFadeIn.play();
-
 }
 
 function runwayExit(){
