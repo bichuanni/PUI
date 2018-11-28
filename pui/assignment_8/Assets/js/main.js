@@ -14,8 +14,10 @@ var darkenBackground;
 var detailSlideRight;
 var detailSlideUp;
 var detailFadeIn;
+var highlightFadeIn;
 var removeDetail;
 var removeRunway;
+var linkExit;
 
 function countUpdate (){
   autoup();
@@ -80,6 +82,27 @@ function defineAnime(){
       document.getElementById('collection').style.display = 'none';
     }
   });
+
+  linkExit = anime({
+    targets: '#nav3',
+    translateY: -50,
+    opacity: 0,
+    direction: 'reverse',
+    delay: 500,
+    duration: 1500,
+    autoplay: false
+  });
+
+  highlightFadeIn = anime({
+    targets: '#highlight',
+    opacity: [0, 1],
+    // direction: 'reverse',
+    delay: 300,
+    duration: 3000,
+    autoplay: false
+  });
+
+
 }
 
 function stateValidator (newState){
@@ -88,7 +111,13 @@ function stateValidator (newState){
       runwayExit("hide");
       document.getElementById('detail').style.display = 'block';
       playDetailAnime("show");
+    }
+    if (newState == "highlight"){
+      runwayExit("hide");
+      document.getElementById('highlight').style.display = 'initial';
 
+      highlightFadeIn.play();
+      // playDetailAnime("show");
     }
     // $('body').removeClass('stop-scrolling');
   }
@@ -96,11 +125,14 @@ function stateValidator (newState){
   else if (curState = "detail"){
     if (newState == "collection"){
       playDetailAnime("hide");
+
       // document.getElementById('detail').style.display = 'none';
       document.getElementById('collection').style.display = 'initial';
       runwayExit("show");
     }
   }
+
+
 
   curState = newState;
   resetUnderline(curState);
@@ -113,12 +145,15 @@ function resetUnderline(curState){
   for (var i = 0; i < 3; i ++){
     document.getElementById('nav'+i).style.textDecoration = 'none';
   }
+
   if (curState == 'collection'){
     document.getElementById('nav0').style.textDecoration = 'underline';
   } else if (curState == 'detail'){
     document.getElementById('nav1').style.textDecoration = 'underline';
-  } else {
+  } else if (curState == 'artists'){
     document.getElementById('nav2').style.textDecoration = 'underline';
+  } else {
+    document.getElementById('nav3').style.textDecoration = 'underline';
   }
 }
 
@@ -134,6 +169,7 @@ function detailReverse(){
   detailSlideRight.reverse();
   detailSlideUp.reverse();
   detailFadeIn.reverse();
+  linkExit.reverse();
 }
 
 function playDetailAnime(state){
@@ -141,6 +177,7 @@ function playDetailAnime(state){
   detailSlideRight.play();
   detailSlideUp.play();
   detailFadeIn.play();
+  linkExit.play();
   if (state == "hide") {
     removeDetail.restart();
   }
@@ -157,18 +194,18 @@ function runwayExit(state){
 
   scrollLeftAnim = anime({
     targets: '#autoup',
-    translateX: [0, -w],
+    // translateX: [0, -w],
     opacity: 0,
     easing: 'linear',
-    duration: 1000
+    duration: 500
   });
 
   scrollRightAnim = anime({
     targets: '#autodown',
-    translateX: [0, w],
+    // translateX: [0, w],
     opacity: 0,
     easing: 'linear',
-    duration: 1000,
+    duration: 500,
   });
 
   if (state == "hide") {
@@ -177,7 +214,7 @@ function runwayExit(state){
 }
 
 function autoup(){
-  var runtime = 15000;
+  var runtime = 35000;
   var maxscroll = document.getElementById('autoup').offsetHeight;
   var imgHeight = document.getElementById('identifier1').offsetHeight;
   var offset = maxscroll - imgHeight;
@@ -193,7 +230,7 @@ function autoup(){
 }
 
 function autodown(){
-  var runtime = 15000;
+  var runtime = 35000;
   var maxscroll = document.getElementById('autodown').offsetHeight;
   var imgHeight = document.getElementById('identifier2').offsetHeight;
   var offset = maxscroll - imgHeight*3/4;
