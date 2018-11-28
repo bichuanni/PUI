@@ -88,7 +88,7 @@ img {
 /*--------------------------------------------------------------*/
 /***************************detail section***********************/
 /*--------------------------------------------------------------*/
-.detail-content {position: absolute; top: 80%; left: 30%; width: 62%;}
+.detail-content {padding-left: 30%; padding-top: 10%}
 
 #detail {
     margin-left: 25px;
