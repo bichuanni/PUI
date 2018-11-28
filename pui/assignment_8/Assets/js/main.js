@@ -4,7 +4,7 @@
 // });
 
 
-var runtime = 5000;
+
 var curState = "collection";
 var scrollUpAnim;
 var scrollDownAnim;
@@ -14,6 +14,8 @@ var darkenBackground;
 var detailSlideRight;
 var detailSlideUp;
 var detailFadeIn;
+var removeDetail;
+var removeRunway;
 
 function countUpdate (){
   autoup();
@@ -39,13 +41,13 @@ function defineAnime(){
     translateX: [-200, 0],
     direction: 'reverse',
     delay: 500,
-    duration: 1500,
-    autoplay: false
+    duration: 1500
   });
 
   detailSlideUp = anime({
     targets: '.detailcontent',
     translateY: [200, 0],
+    opacity: [0, 1],
     direction: 'reverse',
     delay: 500,
     duration: 1500,
@@ -60,14 +62,32 @@ function defineAnime(){
     duration: 1500,
     autoplay: false
   });
+
+  removeDetail = anime({
+    targets: '.detail',
+    delay: 1500,
+    autoplay: false,
+    complete: function(anim) {
+      document.getElementById('detail').style.display = 'none';
+    }
+  });
+
+  removeRunway = anime({
+    targets: '.collection',
+    delay: 1000,
+    autoplay: false,
+    complete: function(anim) {
+      document.getElementById('collection').style.display = 'none';
+    }
+  });
 }
 
 function stateValidator (newState){
   if (curState == "collection"){
     if (newState == "detail"){
-      runwayExit();
+      runwayExit("hide");
       document.getElementById('detail').style.display = 'block';
-      playDetailAnime();
+      playDetailAnime("show");
 
     }
     // $('body').removeClass('stop-scrolling');
@@ -75,15 +95,16 @@ function stateValidator (newState){
 
   else if (curState = "detail"){
     if (newState == "collection"){
-      playDetailAnime();
-
-
+      playDetailAnime("hide");
+      // document.getElementById('detail').style.display = 'none';
       document.getElementById('collection').style.display = 'initial';
+      runwayExit("show");
     }
   }
 
   curState = newState;
   resetUnderline(curState);
+  runwayReverse();
   detailReverse();
 
 }
@@ -101,6 +122,13 @@ function resetUnderline(curState){
   }
 }
 
+function runwayReverse(){
+  scrollDownAnim.reverse();
+  scrollUpAnim.reverse();
+  // autoup();
+  // autodown();
+}
+
 function detailReverse(){
   darkenBackground.reverse();
   detailSlideRight.reverse();
@@ -108,14 +136,17 @@ function detailReverse(){
   detailFadeIn.reverse();
 }
 
-function playDetailAnime(){
+function playDetailAnime(state){
   darkenBackground.play();
   detailSlideRight.play();
   detailSlideUp.play();
   detailFadeIn.play();
+  if (state == "hide") {
+    removeDetail.restart();
+  }
 }
 
-function runwayExit(){
+function runwayExit(state){
   scrollDownAnim.pause();
   scrollUpAnim.pause();
   var w = window.innerWidth;
@@ -138,13 +169,15 @@ function runwayExit(){
     opacity: 0,
     easing: 'linear',
     duration: 1000,
-    complete: function(anim) {
-      document.getElementById('collection').style.display = 'none';
-    }
   });
+
+  if (state == "hide") {
+    removeRunway.restart();
+  }
 }
 
 function autoup(){
+  var runtime = 15000;
   var maxscroll = document.getElementById('autoup').offsetHeight;
   var imgHeight = document.getElementById('identifier1').offsetHeight;
   var offset = maxscroll - imgHeight;
@@ -160,6 +193,7 @@ function autoup(){
 }
 
 function autodown(){
+  var runtime = 15000;
   var maxscroll = document.getElementById('autodown').offsetHeight;
   var imgHeight = document.getElementById('identifier2').offsetHeight;
   var offset = maxscroll - imgHeight*3/4;

@@ -12,6 +12,8 @@
 
     <script src="Assets/library/anime.min.js"></script>
 
+    <link href="Assets/library/hover.css" rel="stylesheet" media="all">
+
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -22,17 +24,20 @@
 <body onload="countUpdate()">
     <div class="container">
             <div class="col-1">
-                <div class="header linkhover" id="nav0" onclick="stateValidator('collection')">Collection</div>
+                <div class="header collection-box box" id="nav0" onclick="stateValidator('collection')">Collection</div>
             </div>
             <div class="col-2">
-                <div class="header linkhover" id="nav1" onclick="stateValidator('detail')">Detail</div>
+                <div class="header detail-box box" id="nav1" onclick="stateValidator('detail')">Detail</div>
             </div>
             <div class="col-3">
-                <div class="header linkhover" id="nav2" onclick="stateValidator('artists')">Artists</div>
+                <div class="header artists-box box" id="nav2" onclick="stateValidator('artists')">Artists</div>
             </div>
             <!-- Highlight -->
-            <div class="highlight-look linkhover">Highlight Looks</div>
-            <!-- <div class="linkhover"></div> -->
+
+            <div class="highlight-look">
+                <div class="highlight-box box">Highlight Looks</div>
+            </div>
+
             <div class="name">Shuangni Huang</div>
             <h1>INERTIA</h1>
 
