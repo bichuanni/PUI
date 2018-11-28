@@ -1,13 +1,8 @@
 /*--------------------------------------------------------------*/
 /************************shared components***********************/
 /*--------------------------------------------------------------*/
-/*.row {
-    padding: 2% 5% 5% 5%;
-}*/
 
-body, html {
-  overflow: visible !important;
-}
+
 
 .linkhover {
     width: 0;
@@ -60,7 +55,9 @@ h1 {
   font-style: italic;
   font-weight: 900;
   font-size: 300%;
+  /*margin-top: 200px;*/
   bottom: 0;
+  /*top: 500px;*/
 }
 
 /* For desktop: */
@@ -73,47 +70,19 @@ h1 {
 .col-3 {position: absolute; left: 23%; width: 8%;}
 .col-4 {position: absolute; left: 30%; width: 27%;}
 .col-5 {position: absolute; left: 55%; width: 33%;}
-/*
-.col-1 a {
-    width: 8%;
-}*/
 
 .runway img{
     padding: 15% 0% 15% 0%;
 }
 
-/*.autoup {
-    animation-duration: 5s;
-    animation-name: autoup;
-    top: -285%;
-}
-
-@keyframes autoup {
-    0%   {top: 0%}
-    10%  {top: 0%}
-    100% {top: -285%}
-}
-*/
-/*#autodown {
-    animation-duration: 5s;
-    animation-name: autodown;
-    top: -4%;
-}
-
-@keyframes autodown {
-    0%   {top: -610%}
-    10%  {top: -610%}
-    100% {top: -4%}
-}*/
-
 #detail {
     margin-left: 25px;
     margin-right: 45px;
+    display: none;
 }
 
 #detailmain {
-    margin-top: 15%;
-
+    margin-top: 20px;
     /*width: 92%;*/
 }
 
@@ -142,17 +111,21 @@ container-fluid {
     position: relative;
 }*/
 
+.subTitle {
+    margin-top: 100px;
+}
 
 h2 {
     color: white;
-    font-size: 17px;
-    font-weight: 300;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 700;
     margin: 0;
     margin-left: 1%;
     padding: 0;
 }
 
-.detailcontent {position: absolute; bottom: -10px; left: 30%; width: 62%;}
+.detailcontent {position: absolute; top: 80%; left: 30%; width: 62%;}
 
 h3 {
     color: white;
@@ -163,12 +136,32 @@ h3 {
     padding: 0;
 }
 
+.swatches {
+    display: grid;
+    grid-template-columns: 19% 19% 19% 19%;
+    grid-gap: 8%;
+}
 
 .button {
     font-weight: 400;
     /*padding: 10px;*/
     text-decoration: none;
 }
+
+/*https://stackoverflow.com/questions/4770025/how-to-disable-scrolling-temporarily*/
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+  /*overflow: visible;*/
+}
+
+/*body, html {
+  overflow: visible !important;
+}*/
+
+/*body, html {
+  overflow: visible !important;
+}*/
 
 
 /*---------------------------------------------------------------*/

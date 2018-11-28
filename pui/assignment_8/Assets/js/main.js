@@ -10,25 +10,71 @@ var scrollUpAnim;
 var scrollDownAnim;
 var scrollLeftAnim;
 var scrollRightAnim;
+var darkenBackground;
+var detailSlideRight;
+var detailSlideUp;
+var detailFadeIn;
 
 function countUpdate (){
   autoup();
   autodown();
+  defineAnime();
 
   document.getElementById('nav0').style.textDecoration = 'underline';
+  // $('body').addClass('stop-scrolling');
 
 }
 
-function stateValidator (newState){
+function defineAnime(){
+  darkenBackground = anime({
+    targets: 'body',
+    backgroundColor: '#1E2531',
+    duration: 1000,
+    autoplay: false
+  });
 
+  detailSlideRight = anime({
+    targets: '.subTitle',
+    translateX: [-200, 0],
+    delay: 500,
+    duration: 1500,
+    autoplay: false
+  });
+
+  detailSlideUp = anime({
+    targets: '.detailcontent',
+    translateY: [200, 0],
+    delay: 500,
+    duration: 1500,
+    autoplay: false
+  });
+
+  detailFadeIn = anime({
+    targets: '#detailmain',
+    opacity: [0, 1],
+    delay: 500,
+    duration: 1500,
+    autoplay: false
+  });
+}
+
+function stateValidator (newState){
   if (curState == "collection"){
-    runwayExit();
-    // runwayExitLeft();
-    detailEnter();
+    if (newState == "detail"){
+      runwayExit();
+      document.getElementById('detail').style.display = 'block';
+      detailEnter();
+
+    }
+    // $('body').removeClass('stop-scrolling');
   }
 
-  if (curState = "detail"){
-    document.getElementById('collection').style.display = 'initial';
+  else if (curState = "detail"){
+    if (newState == "collection"){
+      detailExit();
+
+      document.getElementById('collection').style.display = 'initial';
+    }
   }
 
   curState = newState;
@@ -49,20 +95,26 @@ function resetUnderline(curState){
   }
 }
 
+function detailExit(){
+  console.log("exit fired");
+  darkenBackground.reverse();
+  detailSlideRight.reverse();
+  detailSlideUp.reverse();
+  detailFadeIn.reverse();
+  darkenBackground.play();
+  detailSlideRight.play();
+  detailSlideUp.play();
+  detailFadeIn.play();
+
+
+}
+
 function detailEnter(){
-  var colorchange = anime({
-    targets: 'body',
-    backgroundColor: '#1E2531',
-    duration: 1000
-  });
-
-  var fadeIn = anime({
-    targets: '#detailmain',
-    opacity: [0, 1],
-    delay: 500,
-    duration: 1500
-  });
-
+  console.log("entered");
+  darkenBackground.play();
+  detailSlideRight.play();
+  detailSlideUp.play();
+  detailFadeIn.play();
 
 }
 
