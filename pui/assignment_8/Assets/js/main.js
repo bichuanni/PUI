@@ -41,7 +41,7 @@ function defineAnime(){
 
   detailSlideRight = anime({
     targets: '.subTitle',
-    translateX: [-200, 0],
+    translateX: [-280, 0],
     easing: 'easeInOutExpo',
     direction: 'reverse',
     delay: 500,
@@ -110,7 +110,7 @@ function defineAnime(){
   highlightFadeIn = anime({
     targets: '#highlight',
     opacity: [0, 1],
-    // direction: 'reverse',
+    direction: 'reverse',
     delay: 300,
     duration: 3000,
     autoplay: false
@@ -134,32 +134,39 @@ function stateValidator (newState){
     // $('body').removeClass('stop-scrolling');
   }
 
-  else if (curState = "detail"){
+  if (curState = "detail"){
     if (newState == "collection"){
-
       playDetailAnime("hide");
-
-      // document.getElementById('detail').style.display = 'none';
       document.getElementById('collection').style.display = 'initial';
       runwayExit("show");
-      // defineAutoup();
-      // defineAutodown();
       playRunwayAnime();
     }
   }
 
+  if (curState = "highlight"){
+    if (newState == "collection"){
+      document.getElementById('collection').style.display = 'initial';
+      runwayExit("show");
+      playRunwayAnime();
+
+      highlightFadeIn.play();
+    }
+  }
+
+
+
   curState = newState;
   resetUnderline(curState);
-  runwayReverse();
+  highlightFadeIn.reverse();
+  runwayFade.reverse();
+  // runwayReverse();
   detailReverse();
 
 }
 
-function runwayReverse(){
-  runwayFade.reverse();
-  // autoup();
-  // autodown();
-}
+// function runwayReverse(){
+
+// }
 
 function playRunwayAnime(){
   scrollUpAnim.play();
@@ -180,12 +187,12 @@ function defineAutoup(){
   var runtime = 35000;
   var maxscroll = document.getElementById('autoup').offsetHeight;
   var imgHeight = document.getElementById('identifier1').offsetHeight;
-  var offset = maxscroll - imgHeight;
+  var offset = maxscroll - imgHeight*1.5;
   // console.log(imgHeight);
 
   scrollUpAnim = anime({
     targets: '#autoup',
-    translateY: [0, -offset],
+    translateY: [100, -offset],
     easing: 'linear',
     duration: runtime,
     autoplay: false
@@ -197,12 +204,6 @@ function defineAutodown(){
   var maxscroll = document.getElementById('autodown').offsetHeight;
   var imgHeight = document.getElementById('identifier2').offsetHeight;
   var offset = maxscroll - imgHeight*3/4;
-  // var newStirng = "translateY("+ (-offset).toString() +"px)";
-  // document.getElementById('autodown').style.transform = newStirng;
-  // console.log(newStirng)
-  // console.log(document.getElementById('autodown').style)
-  // console.log(document.getElementById('autodown').style.transform)
-  // console.log(imgHeight);
 
   scrollDownAnim = anime({
     targets: '#autodown',

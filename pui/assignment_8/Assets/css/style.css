@@ -45,7 +45,7 @@
 .name {
     position: fixed;
     right: 0;
-    top: 10%;
+    top: 80px;
     font-size: 16px;
     z-index: 1;
     transform: rotate(270.0deg);
@@ -146,6 +146,7 @@ h3 {
 }
 
 .look-detail {
+    padding: 20px 0 20px 0;
     display: grid;
     grid-template-columns: 45% 45%;
     grid-gap: 10%;
@@ -174,32 +175,43 @@ h3 {
 /************************home page specific***********************/
 /*---------------------------------------------------------------*/
 
-.popup {
-    animation-duration: 5s;
-    animation-name: slidein;
-    background-color: rgb(213, 213, 227);
-    border-radius: 5px;
-    filter: drop-shadow(-5px 7px 15px rgba(200,200,200,.5));
-    font-size: 20px;
-    font-weight: 400;
-    height: 50px;
-    object-fit: cover;
-    padding-left: 7%;
-    padding-top: 2%;
-    position: absolute;
-    right: 3%;
-    opacity: 0;
-    top: 10%;
-    width: 14%;
-}
+/* Medium devices and smaller (landscape tablets/phone, 768px and up) */
+@media only screen and (max-width: 768px) {
+    .name {display: none}
 
-/*animation inspiration from:*/
-/*https://www.w3schools.com/css/css3_animations.asp*/
-@keyframes slidein {
-    0%   {right: -40%; opacity: 0}
-    20%  {right: 3%; opacity: 1}
-    80%  {right: 3%; opacity: 1}
-    100% {right: 3%; opacity: 0}
-}
+    .col-2 {left: 3%;}
+    .col-3 {left: 3%;}
+    .col-4 {width: 60%;}
+    .col-5 {display: none}
 
+    #nav0 {top: 2%;}
+    #nav1 {top: 6%;}
+    #nav2 {top: 10%;}
+
+    #highlight {
+        top: 3%;
+        left: 30%;
+        width: 60%;
+    }
+
+    .look-detail {
+        display: initial;
+    }
+
+    #detail {
+        margin-left: 22%;
+        margin-right: 50px;
+    }
+
+
+    .subTitle {margin-top: 130px;}
+    .detail-content {padding-left: 0}
+
+    .swatches {
+        /*display: grid;*/
+        grid-template-columns: 22% 22% 22% 22%;
+        grid-gap: 4%;
+    }
+
+}
 
