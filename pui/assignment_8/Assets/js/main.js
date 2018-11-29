@@ -246,31 +246,109 @@ function playDetailAnime(state){
   }
 }
 
+var closeups = [false, false, false, false];
+// var closeup1 = false;
+// var closeup2 = false;
+// var closeup3 = false;
+// var closeup4 = false;
+
 function zoom(elem){
+  var curElemId = elem.getAttribute("id");
+  var curTarget = "#"+curElemId;
+  var shrinked = false;
+  console.log(curTarget);
+
+  for (var i = 0; i < 4; i++){
+    var supposedId = "closeup" + i;
+    if (closeups[i] === true){
+      if (curElemId === supposedId){
+        defineShrink(curTarget);
+        closeups[i] = false;
+        shrinked = true;
+      }
+    }
+  }
+
+  if (shrinked == false){
+    for (var i = 0; i < 4; i++){
+      var supposedId = "closeup" + i;
+      if (curElemId === supposedId){
+        defineZoom(curTarget, i);
+        closeups[i] = true;
+      }
+    }
+  }
+
+  // var small = anime({
+  //   targets: '#closeup1',
+  //   translateX: 0,
+  //   scale: 1,
+  //   // direction: 'alternate',
+  //   easing: 'easeInOutExpo',
+  //   duration: 1000
+  //   // autoplay: false
+  // });
+
+  // var targetLocation = document.getElementById("highlight");
+  // var imgSrc = elem.getAttribute("src");
+  // var imgAlt = elem.getAttribute("alt");
+
+  // var newContent = document.createElement("div");
+  // newContent.id = "overlay";
+
+  // var zoomedImg = document.createElement("img");
+  // zoomedImg.className = "enlarge";
+  // zoomedImg.src = imgSrc;
+  // zoomedImg.alt = imgAlt;
+  // console.log(imgSrc);
+
+  // newContent.appendChild(zoomedImg);
+  // targetLocation.appendChild(newContent);
+}
+
+function defineZoom(target, i){
+  if (i%2 == 0){
+    var dir = 1;
+  } else {var dir = -1};
+
+  document.getElementById('overlay').style.display = 'initial';
+
   var big = anime({
-    targets: '#closeup1',
-    translateX: 200,
-    scale: 1.5,
-    easing: 'easeInOutExpo',
-    duration: 1000
-    // autoplay: false
-  });
-  // var curElem =
-  var targetLocation = document.getElementById("highlight");
-  var imgSrc = elem.getAttribute("src");
-  var imgAlt = elem.getAttribute("alt");
+      targets: target,
+      translateX: 200*dir,
+      scale: 1.5,
+      zIndex: 1,
+      easing: 'easeInOutExpo',
+      duration: 1000
+    });
 
-  var newContent = document.createElement("div");
-  newContent.id = "overlay";
+  var darken = anime({
+      targets: "#overlay",
+      opacity: 0.8,
+      easing: 'easeInOutExpo',
+      duration: 500
+    });
+}
 
-  var zoomedImg = document.createElement("img");
-  zoomedImg.className = "enlarge";
-  zoomedImg.src = imgSrc;
-  zoomedImg.alt = imgAlt;
-  console.log(imgSrc);
+function defineShrink(target){
+  var small = anime({
+      targets: target,
+      translateX: 0,
+      zIndex: 0,
+      scale: 1,
+      easing: 'easeInOutExpo',
+      duration: 1000
+    });
 
-  newContent.appendChild(zoomedImg);
-  targetLocation.appendChild(newContent);
+  var lighten = anime({
+      targets: "#overlay",
+      opacity: 0,
+      easing: 'easeInOutExpo',
+      duration: 500,
+      complete: function(anim) {
+        document.getElementById('overlay').style.display = 'none';
+      }
+    });
 }
 
 function resetUnderline(curState){
