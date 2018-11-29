@@ -168,14 +168,17 @@ h3 {
     grid-gap: 10%;
 }
 
-/*.button {
-    font-weight: 400;
-    padding: 10px;
-    text-decoration: none;
-}*/
+#artist {
+    margin-top: 70px;
+    margin-left: 40%;
+    width: 50%;
+    display: none;
+    /*display: inline-block;*/
+}
 
-
-
+#profile img{
+    width: 50%;
+}
 /*https://stackoverflow.com/questions/4770025/how-to-disable-scrolling-temporarily*/
 .stop-scrolling {
   height: 100%;

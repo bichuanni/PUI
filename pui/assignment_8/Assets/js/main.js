@@ -128,8 +128,17 @@ function defineAnime(){
     targets: '#highlight',
     opacity: [0, 1],
     direction: 'reverse',
-    delay: 300,
-    duration: 3000,
+    duration: 2000,
+    autoplay: false
+  });
+
+  proflieEnter = anime({
+    targets: '#artist',
+    opacity: [0, 1],
+    translateX: ['50%', 0],
+    easing: 'easeInOutExpo',
+    direction: 'reverse',
+    duration: 1500,
     autoplay: false
   });
 }
@@ -146,11 +155,16 @@ function changeVlidator (newState){
     if (newState == "highlight"){
       runwayExit("hide");
       document.getElementById('highlight').style.display = 'initial';
-
       highlightFadeIn.play();
       highlightFadeIn.reverse();
       runwayFade.reverse();
-      // playDetailAnime("show");
+    }
+    if (newState == "artist"){
+      runwayExit("hide");
+      document.getElementById('artist').style.display = 'inline-block';
+      proflieEnter.play();
+      proflieEnter.reverse();
+      runwayFade.reverse();
     }
     // $('body').removeClass('stop-scrolling');
   }
@@ -164,6 +178,38 @@ function changeVlidator (newState){
       detailReverse();
       runwayFade.reverse();
     }
+    if (newState == "artist"){
+      playDetailAnime("hide");
+      document.getElementById('artist').style.display = 'inline-block';
+      proflieEnter.play();
+      proflieEnter.reverse();
+      detailReverse();
+    }
+  }
+
+  if (curState == "artist"){
+    if (newState == "collection"){
+      document.getElementById('collection').style.display = 'initial';
+      runwayExit("show");
+      playRunwayAnime();
+      proflieEnter.play();
+      proflieEnter.reverse();
+      runwayFade.reverse();
+    }
+    if (newState == "detail"){
+      document.getElementById('detail').style.display = 'initial';
+      playDetailAnime("show");
+      detailReverse();
+      proflieEnter.play();
+      proflieEnter.reverse();
+    }
+    if (newState == "highlight"){
+      document.getElementById('highlight').style.display = 'initial';
+      highlightFadeIn.play();
+      highlightFadeIn.reverse();
+      proflieEnter.play();
+      proflieEnter.reverse();
+    }
   }
 
   if (curState == "highlight"){
@@ -176,10 +222,16 @@ function changeVlidator (newState){
       runwayFade.reverse();
     }
     if (newState == "detail"){
-      // runwayExit("hide");
       document.getElementById('detail').style.display = 'initial';
       playDetailAnime("show");
       detailReverse();
+      highlightFadeIn.play();
+      highlightFadeIn.reverse();
+    }
+    if (newState == "artist"){
+      document.getElementById('artist').style.display = 'inline-block';
+      proflieEnter.play();
+      proflieEnter.reverse();
       highlightFadeIn.play();
       highlightFadeIn.reverse();
     }
@@ -187,10 +239,6 @@ function changeVlidator (newState){
 
   curState = newState;
   resetUnderline(curState);
-  // highlightFadeIn.reverse();
-  // runwayFade.reverse();
-  // runwayReverse();
-
 }
 
 // see if the current state of the page has changed --> if transitions need to be made
@@ -217,7 +265,7 @@ function runwayExit(state){
 }
 
 function defineAutoup(){
-  var runtime = 35000;
+  var runtime = 80000;
   var maxscroll = document.getElementById('autoup').offsetHeight;
   var imgHeight = document.getElementById('identifier1').offsetHeight;
   var offset = maxscroll - imgHeight*1.5;
@@ -225,7 +273,7 @@ function defineAutoup(){
 
   scrollUpAnim = anime({
     targets: '#autoup',
-    translateY: [100, -offset],
+    translateY: [0, -offset],
     direction: 'alternate',
     easing: 'linear',
     loop: true,
@@ -235,10 +283,10 @@ function defineAutoup(){
 }
 
 function defineAutodown(){
-  var runtime = 35000;
+  var runtime = 80000;
   var maxscroll = document.getElementById('autodown').offsetHeight;
   var imgHeight = document.getElementById('identifier2').offsetHeight;
-  var offset = maxscroll - imgHeight*3/4;
+  var offset = maxscroll - imgHeight*0.9;
 
   scrollDownAnim = anime({
     targets: '#autodown',
@@ -356,7 +404,7 @@ function resetUnderline(curState){
   if (curState == 'detail'){
     document.getElementById('nav1').style.textDecoration = 'underline';
   }
-  if (curState == 'artists'){
+  if (curState == 'artist'){
     document.getElementById('nav2').style.textDecoration = 'underline';
   }
   if (curState == 'highlight'){
