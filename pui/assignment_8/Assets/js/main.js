@@ -108,7 +108,7 @@ function defineAnime(){
     targets: '#collection',
     // translateX: [0, w],
     direction: 'reverse',
-    opacity: 0,
+    opacity: [1, 0],
     easing: 'linear',
     duration: 500,
     autoplay: false
@@ -140,47 +140,55 @@ function changeVlidator (newState){
       runwayExit("hide");
       document.getElementById('detail').style.display = 'initial';
       playDetailAnime("show");
-      // detailReverse();
+      detailReverse();
+      runwayFade.reverse();
     }
     if (newState == "highlight"){
       runwayExit("hide");
       document.getElementById('highlight').style.display = 'initial';
 
       highlightFadeIn.play();
+      highlightFadeIn.reverse();
+      runwayFade.reverse();
       // playDetailAnime("show");
     }
     // $('body').removeClass('stop-scrolling');
   }
 
-  if (curState = "detail"){
+  if (curState == "detail"){
     if (newState == "collection"){
       playDetailAnime("hide");
       document.getElementById('collection').style.display = 'initial';
       runwayExit("show");
       playRunwayAnime();
       detailReverse();
+      runwayFade.reverse();
     }
   }
 
-  if (curState = "highlight"){
+  if (curState == "highlight"){
     if (newState == "collection"){
       document.getElementById('collection').style.display = 'initial';
       runwayExit("show");
       playRunwayAnime();
       highlightFadeIn.play();
+      highlightFadeIn.reverse();
+      runwayFade.reverse();
     }
     if (newState == "detail"){
       // runwayExit("hide");
       document.getElementById('detail').style.display = 'initial';
       playDetailAnime("show");
       detailReverse();
+      highlightFadeIn.play();
+      highlightFadeIn.reverse();
     }
   }
 
   curState = newState;
   resetUnderline(curState);
-  highlightFadeIn.reverse();
-  runwayFade.reverse();
+  // highlightFadeIn.reverse();
+  // runwayFade.reverse();
   // runwayReverse();
 
 }
