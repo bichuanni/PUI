@@ -121,7 +121,7 @@ function stateValidator (newState){
   if (curState == "collection"){
     if (newState == "detail"){
       runwayExit("hide");
-      document.getElementById('detail').style.display = 'block';
+      document.getElementById('detail').style.display = 'initial';
       playDetailAnime("show");
     }
     if (newState == "highlight"){
