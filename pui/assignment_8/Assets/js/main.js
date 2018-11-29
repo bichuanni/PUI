@@ -18,6 +18,7 @@ var removeDetail;
 var removeRunway;
 var runwayFade;
 var linkExit;
+var closeups = [false, false, false, false];
 
 function countUpdate (){
   defineAnime();
@@ -133,7 +134,7 @@ function defineAnime(){
   });
 }
 
-function stateValidator (newState){
+function changeVlidator (newState){
   if (curState == "collection"){
     if (newState == "detail"){
       runwayExit("hide");
@@ -164,7 +165,6 @@ function stateValidator (newState){
       document.getElementById('collection').style.display = 'initial';
       runwayExit("show");
       playRunwayAnime();
-
       highlightFadeIn.play();
     }
   }
@@ -177,9 +177,13 @@ function stateValidator (newState){
   detailReverse();
 }
 
-// function runwayReverse(){
+// see if the current state of the page has changed --> if transitions need to be made
+function stateValidator(newState) {
+  if (curState !== newState){
+    changeVlidator(newState);
+  }
+}
 
-// }
 
 function playRunwayAnime(){
   scrollUpAnim.play();
@@ -246,23 +250,14 @@ function playDetailAnime(state){
   }
 }
 
-var closeups = [false, false, false, false];
-// var closeup1 = false;
-// var closeup2 = false;
-// var closeup3 = false;
-// var closeup4 = false;
-
-function zoom(elem){
-  var curElemId = elem.getAttribute("id");
-  var curTarget = "#"+curElemId;
+function zoom(id){
   var shrinked = false;
-  console.log(curTarget);
 
   for (var i = 0; i < 4; i++){
     var supposedId = "closeup" + i;
     if (closeups[i] === true){
-      if (curElemId === supposedId){
-        defineShrink(curTarget);
+      if (id === supposedId){
+        defineShrink(id);
         closeups[i] = false;
         shrinked = true;
       }
@@ -272,52 +267,29 @@ function zoom(elem){
   if (shrinked == false){
     for (var i = 0; i < 4; i++){
       var supposedId = "closeup" + i;
-      if (curElemId === supposedId){
-        defineZoom(curTarget, i);
+      if (id === supposedId){
+        defineZoom(id, i);
         closeups[i] = true;
       }
     }
   }
-
-  // var small = anime({
-  //   targets: '#closeup1',
-  //   translateX: 0,
-  //   scale: 1,
-  //   // direction: 'alternate',
-  //   easing: 'easeInOutExpo',
-  //   duration: 1000
-  //   // autoplay: false
-  // });
-
-  // var targetLocation = document.getElementById("highlight");
-  // var imgSrc = elem.getAttribute("src");
-  // var imgAlt = elem.getAttribute("alt");
-
-  // var newContent = document.createElement("div");
-  // newContent.id = "overlay";
-
-  // var zoomedImg = document.createElement("img");
-  // zoomedImg.className = "enlarge";
-  // zoomedImg.src = imgSrc;
-  // zoomedImg.alt = imgAlt;
-  // console.log(imgSrc);
-
-  // newContent.appendChild(zoomedImg);
-  // targetLocation.appendChild(newContent);
 }
 
-function defineZoom(target, i){
+function defineZoom(id, i){
+  var target = "#" + id;
+
   if (i%2 == 0){
     var dir = 1;
   } else {var dir = -1};
 
   document.getElementById('overlay').style.display = 'initial';
+  document.getElementById(id).style.zIndex = 1;
+
 
   var big = anime({
       targets: target,
       translateX: 200*dir,
       scale: 1.5,
-      zIndex: 1,
       easing: 'easeInOutExpo',
       duration: 1000
     });
@@ -330,7 +302,9 @@ function defineZoom(target, i){
     });
 }
 
-function defineShrink(target){
+function defineShrink(id){
+  var target = "#" + id;
+
   var small = anime({
       targets: target,
       translateX: 0,
