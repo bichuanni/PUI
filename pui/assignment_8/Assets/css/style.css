@@ -56,11 +56,18 @@ h1 {
   font-family: 'Rubik';
   font-style: italic;
   font-weight: 900;
-  font-size: 300%;
+  font-size: 3em;
+  left: 3%;
   bottom: 0;
   z-index: 1;
+/*
+  font-size: 5em;
+  left: 37%;
+  bottom: 40%;
+*/
 }
 
+/*html, body {height: 100%; width: 100%;}*/
 
 a {
     color: white;
@@ -104,6 +111,18 @@ img {
     /*padding: 20px 5%;*/
     /*width: 90%;*/
 }
+
+#overlay {
+    position: absolute;
+}
+/*
+.look-detail img {
+    transition: transform 0.25s ease;
+}
+
+.look-detail img:active {
+    transform: scale(2);
+}*/
 
 .subTitle {
     margin-top: 100px;
@@ -165,6 +184,14 @@ h3 {
   height: 100%;
   overflow: hidden;
   /*overflow: visible;*/
+}
+
+#arrow {
+    width: 5%;
+    /*align-content: center;*/
+    /*align-items: center;*/
+    padding-left: 48%;
+    padding-top: 55%;
 }
 
 /*body, html {

@@ -4,6 +4,7 @@
 // });
 
 var curState = "collection";
+
 var scrollUpAnim;
 var scrollDownAnim;
 var scrollLeftAnim;
@@ -26,6 +27,21 @@ function countUpdate (){
   // $('body').addClass('stop-scrolling');
 
 }
+
+// function enter(){
+//   console.log("trigger");
+//   var postionLogo = anime({
+//     targets: 'h1',
+//     // backgroundColor: '#1E2531',
+//     // direction: 'reverse',
+//     fontSize: '48px',
+//      // scale: 0.5,
+//     left: '3%',
+//     bottom: 0,
+//     duration: 1000,
+//     autoplay: false
+//   });
+// }
 
 function defineAnime(){
   defineAutoup();
@@ -153,15 +169,12 @@ function stateValidator (newState){
     }
   }
 
-
-
   curState = newState;
   resetUnderline(curState);
   highlightFadeIn.reverse();
   runwayFade.reverse();
   // runwayReverse();
   detailReverse();
-
 }
 
 // function runwayReverse(){
@@ -207,7 +220,7 @@ function defineAutodown(){
 
   scrollDownAnim = anime({
     targets: '#autodown',
-    translateY: [-offset, 0],
+    translateY: [-offset, -300],
     easing: 'linear',
     duration: runtime,
     autoplay: false
@@ -233,6 +246,33 @@ function playDetailAnime(state){
   }
 }
 
+function zoom(elem){
+  var big = anime({
+    targets: '#closeup1',
+    translateX: 200,
+    scale: 1.5,
+    easing: 'easeInOutExpo',
+    duration: 1000
+    // autoplay: false
+  });
+  // var curElem =
+  var targetLocation = document.getElementById("highlight");
+  var imgSrc = elem.getAttribute("src");
+  var imgAlt = elem.getAttribute("alt");
+
+  var newContent = document.createElement("div");
+  newContent.id = "overlay";
+
+  var zoomedImg = document.createElement("img");
+  zoomedImg.className = "enlarge";
+  zoomedImg.src = imgSrc;
+  zoomedImg.alt = imgAlt;
+  console.log(imgSrc);
+
+  newContent.appendChild(zoomedImg);
+  targetLocation.appendChild(newContent);
+}
+
 function resetUnderline(curState){
   for (var i = 0; i < 3; i ++){
     document.getElementById('nav'+i).style.textDecoration = 'none';
@@ -240,11 +280,14 @@ function resetUnderline(curState){
 
   if (curState == 'collection'){
     document.getElementById('nav0').style.textDecoration = 'underline';
-  } else if (curState == 'detail'){
+  }
+  if (curState == 'detail'){
     document.getElementById('nav1').style.textDecoration = 'underline';
-  } else if (curState == 'artists'){
+  }
+  if (curState == 'artists'){
     document.getElementById('nav2').style.textDecoration = 'underline';
-  } else {
+  }
+  if (curState == 'highlight'){
     document.getElementById('nav3').style.textDecoration = 'underline';
   }
 }
