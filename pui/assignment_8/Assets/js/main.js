@@ -104,13 +104,23 @@ function defineAnime(){
     }
   });
 
-  runwayFade = anime({
+  runwayFadeOut = anime({
     targets: '#collection',
     // translateX: [0, w],
-    direction: 'reverse',
+    // direction: 'reverse',
     opacity: 0,
     easing: 'linear',
     duration: 500,
+    autoplay: false
+  });
+
+  runwayFadeIn = anime({
+    targets: '#collection',
+    // translateX: [0, w],
+    // direction: 'reverse',
+    opacity: [0, 1],
+    easing: 'linear',
+    duration: 1500,
     autoplay: false
   });
 
@@ -137,12 +147,14 @@ function defineAnime(){
 function changeVlidator (newState){
   if (curState == "collection"){
     if (newState == "detail"){
-      runwayExit("hide");
+      runwayFadeOut.restart();
+      removeRunway.restart();
       document.getElementById('detail').style.display = 'initial';
       playDetailAnime("show");
     }
     if (newState == "highlight"){
-      runwayExit("hide");
+      runwayFadeOut.restart();
+      removeRunway.restart();
       document.getElementById('highlight').style.display = 'initial';
 
       highlightFadeIn.play();
@@ -155,7 +167,7 @@ function changeVlidator (newState){
     if (newState == "collection"){
       playDetailAnime("hide");
       document.getElementById('collection').style.display = 'initial';
-      runwayExit("show");
+      runwayFadeIn.restart();
       playRunwayAnime();
     }
   }
@@ -163,8 +175,14 @@ function changeVlidator (newState){
   if (curState = "highlight"){
     if (newState == "collection"){
       document.getElementById('collection').style.display = 'initial';
-      runwayExit("show");
+      runwayFadeIn.restart();
       playRunwayAnime();
+      highlightFadeIn.play();
+    }
+    if (newState == "detail"){
+      // runwayExit("hide");
+      document.getElementById('detail').style.display = 'initial';
+      playDetailAnime("show");
       highlightFadeIn.play();
     }
   }
@@ -172,7 +190,7 @@ function changeVlidator (newState){
   curState = newState;
   resetUnderline(curState);
   highlightFadeIn.reverse();
-  runwayFade.reverse();
+  // runwayFade.reverse();
   // runwayReverse();
   detailReverse();
 }
@@ -193,10 +211,10 @@ function playRunwayAnime(){
 function runwayExit(state){
   // scrollDownAnim.pause();
   // scrollUpAnim.pause();
-  runwayFade.play();
+
 
   if (state == "hide") {
-    removeRunway.restart();
+
   }
 }
 
@@ -210,7 +228,9 @@ function defineAutoup(){
   scrollUpAnim = anime({
     targets: '#autoup',
     translateY: [100, -offset],
+    direction: 'alternate',
     easing: 'linear',
+    loop: true,
     duration: runtime,
     autoplay: false
   });
@@ -225,7 +245,9 @@ function defineAutodown(){
   scrollDownAnim = anime({
     targets: '#autodown',
     translateY: [-offset, -300],
+    direction: 'alternate',
     easing: 'linear',
+    loop: true,
     duration: runtime,
     autoplay: false
   });
