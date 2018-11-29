@@ -25,24 +25,9 @@ function countUpdate (){
   playRunwayAnime();
 
   document.getElementById('nav0').style.textDecoration = 'underline';
-  // $('body').addClass('stop-scrolling');
+  $('body').addClass('stop-scrolling');
 
 }
-
-// function enter(){
-//   console.log("trigger");
-//   var postionLogo = anime({
-//     targets: 'h1',
-//     // backgroundColor: '#1E2531',
-//     // direction: 'reverse',
-//     fontSize: '48px',
-//      // scale: 0.5,
-//     left: '3%',
-//     bottom: 0,
-//     duration: 1000,
-//     autoplay: false
-//   });
-// }
 
 function defineAnime(){
   defineAutoup();
@@ -106,7 +91,6 @@ function defineAnime(){
 
   runwayFade = anime({
     targets: '#collection',
-    // translateX: [0, w],
     direction: 'reverse',
     opacity: [1, 0],
     easing: 'linear',
@@ -128,7 +112,7 @@ function defineAnime(){
     targets: '#highlight',
     opacity: [0, 1],
     direction: 'reverse',
-    duration: 2000,
+    duration: 1000,
     autoplay: false
   });
 
@@ -146,45 +130,40 @@ function defineAnime(){
 function changeVlidator (newState){
   if (curState == "collection"){
     if (newState == "detail"){
-      runwayExit("hide");
       document.getElementById('detail').style.display = 'initial';
       playDetailAnime("show");
       detailReverse();
-      runwayFade.reverse();
     }
     if (newState == "highlight"){
-      runwayExit("hide");
       document.getElementById('highlight').style.display = 'initial';
       highlightFadeIn.play();
       highlightFadeIn.reverse();
-      runwayFade.reverse();
     }
     if (newState == "artist"){
-      runwayExit("hide");
       document.getElementById('artist').style.display = 'inline-block';
       proflieEnter.play();
       proflieEnter.reverse();
-      runwayFade.reverse();
     }
-    // $('body').removeClass('stop-scrolling');
+    runwayExit("hide");
+    runwayFade.reverse();
+    $('body').removeClass('stop-scrolling');
   }
 
   if (curState == "detail"){
     if (newState == "collection"){
-      playDetailAnime("hide");
       document.getElementById('collection').style.display = 'initial';
       runwayExit("show");
       playRunwayAnime();
-      detailReverse();
       runwayFade.reverse();
+      $('body').addClass('stop-scrolling');
     }
     if (newState == "artist"){
-      playDetailAnime("hide");
       document.getElementById('artist').style.display = 'inline-block';
       proflieEnter.play();
       proflieEnter.reverse();
-      detailReverse();
     }
+    playDetailAnime("hide");
+    detailReverse();
   }
 
   if (curState == "artist"){
@@ -192,24 +171,21 @@ function changeVlidator (newState){
       document.getElementById('collection').style.display = 'initial';
       runwayExit("show");
       playRunwayAnime();
-      proflieEnter.play();
-      proflieEnter.reverse();
       runwayFade.reverse();
+      $('body').addClass('stop-scrolling');
     }
     if (newState == "detail"){
       document.getElementById('detail').style.display = 'initial';
       playDetailAnime("show");
       detailReverse();
-      proflieEnter.play();
-      proflieEnter.reverse();
     }
     if (newState == "highlight"){
       document.getElementById('highlight').style.display = 'initial';
       highlightFadeIn.play();
       highlightFadeIn.reverse();
-      proflieEnter.play();
-      proflieEnter.reverse();
     }
+    proflieEnter.play();
+    proflieEnter.reverse();
   }
 
   if (curState == "highlight"){
@@ -217,24 +193,21 @@ function changeVlidator (newState){
       document.getElementById('collection').style.display = 'initial';
       runwayExit("show");
       playRunwayAnime();
-      highlightFadeIn.play();
-      highlightFadeIn.reverse();
       runwayFade.reverse();
+      $('body').addClass('stop-scrolling');
     }
     if (newState == "detail"){
       document.getElementById('detail').style.display = 'initial';
       playDetailAnime("show");
       detailReverse();
-      highlightFadeIn.play();
-      highlightFadeIn.reverse();
     }
     if (newState == "artist"){
       document.getElementById('artist').style.display = 'inline-block';
       proflieEnter.play();
       proflieEnter.reverse();
-      highlightFadeIn.play();
-      highlightFadeIn.reverse();
     }
+    highlightFadeIn.play();
+    highlightFadeIn.reverse();
   }
 
   curState = newState;
