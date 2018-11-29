@@ -14,9 +14,11 @@ var detailSlideRight;
 var detailSlideUp;
 var detailFadeIn;
 var highlightFadeIn;
+var highlightFadeOut;
 var removeDetail;
 var removeRunway;
-var runwayFade;
+var runwayFadeIn;
+var runwayFadeOut;
 var linkExit;
 var closeups = [false, false, false, false];
 
@@ -118,7 +120,7 @@ function defineAnime(){
     targets: '#collection',
     // translateX: [0, w],
     // direction: 'reverse',
-    opacity: [0, 1],
+    opacity: 1,
     easing: 'linear',
     duration: 1500,
     autoplay: false
@@ -134,14 +136,30 @@ function defineAnime(){
     autoplay: false
   });
 
+  highlightFadeOut = anime({
+    targets: '#highlight',
+    opacity: 0,
+    // direction: 'reverse',
+    easing: 'linear',
+    delay: 300,
+    duration: 1000,
+    autoplay: false,
+    complete: function(anim) {
+      document.getElementById('highlight').style.display = 'none';
+    }
+  });
+
   highlightFadeIn = anime({
     targets: '#highlight',
-    opacity: [0, 1],
-    direction: 'reverse',
-    delay: 300,
-    duration: 3000,
+    opacity: 1,
+    // direction: 'reverse',
+    easing: 'linear',
+    // delay: 300,
+    duration: 1000,
     autoplay: false
   });
+
+
 }
 
 function changeVlidator (newState){
@@ -157,7 +175,7 @@ function changeVlidator (newState){
       removeRunway.restart();
       document.getElementById('highlight').style.display = 'initial';
 
-      highlightFadeIn.play();
+      highlightFadeIn.restart();
       // playDetailAnime("show");
     }
     // $('body').removeClass('stop-scrolling');
@@ -177,19 +195,19 @@ function changeVlidator (newState){
       document.getElementById('collection').style.display = 'initial';
       runwayFadeIn.restart();
       playRunwayAnime();
-      highlightFadeIn.play();
+      highlightFadeOut.restart();
     }
     if (newState == "detail"){
       // runwayExit("hide");
       document.getElementById('detail').style.display = 'initial';
       playDetailAnime("show");
-      highlightFadeIn.play();
+      highlightFadeOut.restart();
     }
   }
 
   curState = newState;
   resetUnderline(curState);
-  highlightFadeIn.reverse();
+  // highlightFadeIn.reverse();
   // runwayFade.reverse();
   // runwayReverse();
   detailReverse();
