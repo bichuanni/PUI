@@ -14,11 +14,9 @@ var detailSlideRight;
 var detailSlideUp;
 var detailFadeIn;
 var highlightFadeIn;
-var highlightFadeOut;
 var removeDetail;
 var removeRunway;
-var runwayFadeIn;
-var runwayFadeOut;
+var runwayFade;
 var linkExit;
 var closeups = [false, false, false, false];
 
@@ -106,23 +104,13 @@ function defineAnime(){
     }
   });
 
-  runwayFadeOut = anime({
+  runwayFade = anime({
     targets: '#collection',
     // translateX: [0, w],
-    // direction: 'reverse',
+    direction: 'reverse',
     opacity: 0,
     easing: 'linear',
     duration: 500,
-    autoplay: false
-  });
-
-  runwayFadeIn = anime({
-    targets: '#collection',
-    // translateX: [0, w],
-    // direction: 'reverse',
-    opacity: 1,
-    easing: 'linear',
-    duration: 1500,
     autoplay: false
   });
 
@@ -136,46 +124,29 @@ function defineAnime(){
     autoplay: false
   });
 
-  highlightFadeOut = anime({
-    targets: '#highlight',
-    opacity: 0,
-    // direction: 'reverse',
-    easing: 'linear',
-    delay: 300,
-    duration: 1000,
-    autoplay: false,
-    complete: function(anim) {
-      document.getElementById('highlight').style.display = 'none';
-    }
-  });
-
   highlightFadeIn = anime({
     targets: '#highlight',
-    opacity: 1,
-    // direction: 'reverse',
-    easing: 'linear',
-    // delay: 300,
-    duration: 1000,
+    opacity: [0, 1],
+    direction: 'reverse',
+    delay: 300,
+    duration: 3000,
     autoplay: false
   });
-
-
 }
 
 function changeVlidator (newState){
   if (curState == "collection"){
     if (newState == "detail"){
-      runwayFadeOut.restart();
-      removeRunway.restart();
+      runwayExit("hide");
       document.getElementById('detail').style.display = 'initial';
       playDetailAnime("show");
+      // detailReverse();
     }
     if (newState == "highlight"){
-      runwayFadeOut.restart();
-      removeRunway.restart();
+      runwayExit("hide");
       document.getElementById('highlight').style.display = 'initial';
 
-      highlightFadeIn.restart();
+      highlightFadeIn.play();
       // playDetailAnime("show");
     }
     // $('body').removeClass('stop-scrolling');
@@ -185,32 +156,33 @@ function changeVlidator (newState){
     if (newState == "collection"){
       playDetailAnime("hide");
       document.getElementById('collection').style.display = 'initial';
-      runwayFadeIn.restart();
+      runwayExit("show");
       playRunwayAnime();
+      detailReverse();
     }
   }
 
   if (curState = "highlight"){
     if (newState == "collection"){
       document.getElementById('collection').style.display = 'initial';
-      runwayFadeIn.restart();
+      runwayExit("show");
       playRunwayAnime();
-      highlightFadeOut.restart();
+      highlightFadeIn.play();
     }
     if (newState == "detail"){
       // runwayExit("hide");
       document.getElementById('detail').style.display = 'initial';
       playDetailAnime("show");
-      highlightFadeOut.restart();
+      detailReverse();
     }
   }
 
   curState = newState;
   resetUnderline(curState);
-  // highlightFadeIn.reverse();
-  // runwayFade.reverse();
+  highlightFadeIn.reverse();
+  runwayFade.reverse();
   // runwayReverse();
-  detailReverse();
+
 }
 
 // see if the current state of the page has changed --> if transitions need to be made
@@ -229,10 +201,10 @@ function playRunwayAnime(){
 function runwayExit(state){
   // scrollDownAnim.pause();
   // scrollUpAnim.pause();
-
+  runwayFade.play();
 
   if (state == "hide") {
-
+    removeRunway.restart();
   }
 }
 
