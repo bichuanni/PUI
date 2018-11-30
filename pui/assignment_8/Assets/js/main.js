@@ -5,6 +5,7 @@
 
 var curState = "collection";
 
+var blink;
 var scrollUpAnim;
 var scrollDownAnim;
 var scrollLeftAnim;
@@ -20,13 +21,53 @@ var runwayFade;
 var linkExit;
 var closeups = [false, false, false, false];
 
-function countUpdate (){
+function setUp(){
   defineAnime();
   playRunwayAnime();
-
   document.getElementById('nav0').style.textDecoration = 'underline';
   $('body').addClass('stop-scrolling');
 
+  blink = anime({
+    targets: 'h1',
+    easing: 'linear',
+    direction: 'alternate',
+    opacity: 0,
+    loop: true,
+    duration: 1000
+  });
+}
+
+function enter(){
+  document.getElementsByTagName('h1')[0].style.opacity = 1;
+      blink.pause();
+
+  var repositionLogo = anime({
+    targets: 'h1',
+    easing: 'easeOutExpo',
+    left: ['45%', '3%'],
+    bottom: 0,
+    duration: 2500
+  });
+
+  var fadeBackdrop = anime({
+    targets: '#backdrop',
+    opacity: 0,
+    easing: 'easeOutExpo',
+    duration: 1500,
+    complete: function(anim) {
+      document.getElementById('backdrop').style.display = 'none';
+    }
+  });
+
+  var arrowExit = anime({
+    targets: '#arrow',
+    opacity: 0,
+    easing: 'easeOutExpo',
+    duration: 1500,
+    complete: function(anim) {
+      document.getElementById('arrow').style.display = 'none';
+    }
+  });
 }
 
 function defineAnime(){
